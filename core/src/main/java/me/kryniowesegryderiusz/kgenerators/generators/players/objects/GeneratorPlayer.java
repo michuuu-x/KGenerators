@@ -35,7 +35,13 @@ public class GeneratorPlayer {
 		this.isNone = isNone;
 	}
 
+	/**
+	 * @return online player or null if this is the "none" owner or the player is offline
+	 */
 	public Player getOnlinePlayer() {
+		if (this.nick == null)
+			return null;
+
 		return Bukkit.getPlayer(this.nick);
 	}
 
@@ -127,8 +133,9 @@ public class GeneratorPlayer {
 	}
 
 	/**
-	 * Online player only
-	 * 
+	 * Limits are checked against online player only. Generators without an owner
+	 * or with an offline owner (eg. spawned by command) are not limited.
+	 *
 	 * @param player
 	 * @param generatorId
 	 * @return
@@ -137,7 +144,11 @@ public class GeneratorPlayer {
 		if (!Main.getLimits().hasLimits())
 			return true;
 
-		PlayerLimits pl = new PlayerLimits(this.getOnlinePlayer());
+		Player player = this.getOnlinePlayer();
+		if (isNone || player == null)
+			return true;
+
+		PlayerLimits pl = new PlayerLimits(player);
 		for (Limit limit : Main.getLimits().getValues()) {
 			if (!limit.fulfillsPlaceLimit(this, gLoc, pl))
 				return false;
