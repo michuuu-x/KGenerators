@@ -1,22 +1,21 @@
 package me.kryniowesegryderiusz.kgenerators.settings.objects;
 
-import java.util.Optional;
-
+import org.bukkit.NamespacedKey;
+import org.bukkit.Registry;
 import org.bukkit.entity.Player;
 
 import me.kryniowesegryderiusz.kgenerators.logger.Logger;
 import me.kryniowesegryderiusz.kgenerators.utils.immutable.Config;
-import com.cryptomorin.xseries.XSound;
 
 public class Sound {
 
-	XSound xsound;
+	org.bukkit.Sound sound;
 	float volume = 0.2f;
 	float pitch = 0.0f;
 
 	/**
 	 * Constructor loading sound from config
-	 * 
+	 *
 	 * @param cfg
 	 * @param path to sound
 	 */
@@ -24,12 +23,12 @@ public class Sound {
 		if (cfg.contains(path + ".sound")) {
 			String name = cfg.getString(path + ".sound");
 			if (!name.toLowerCase().equals("none")) {
-				Optional<XSound> xso = XSound.matchXSound(name);
-				if (!xso.isPresent()) {
+				org.bukkit.Sound found = find(name);
+				if (found == null) {
 					Logger.error("Config file: Sound " + name + " doesnt exist! It'll not work!");
 					return;
 				}
-				this.xsound = xso.get();
+				this.sound = found;
 
 				if (cfg.contains(path + ".volume"))
 					this.volume = (float) cfg.getDouble(path + ".volume");
@@ -39,13 +38,30 @@ public class Sound {
 		}
 	}
 
-	public Sound(XSound xsound) {
-		this.xsound = xsound;
+	public Sound(org.bukkit.Sound sound) {
+		this.sound = sound;
 	}
 
 	public void play(Player p) {
-		if (this.xsound != null)
-			this.xsound.play(p, this.volume, this.pitch);
+		if (this.sound != null)
+			p.playSound(p.getLocation(), this.sound, this.volume, this.pitch);
+	}
+
+	/**
+	 * Finds sound by its enum-like name (ENTITY_PLAYER_LEVELUP) or key (entity.player.levelup)
+	 */
+	private static org.bukkit.Sound find(String name) {
+		String wanted = normalize(name);
+		for (org.bukkit.Sound s : Registry.SOUNDS) {
+			NamespacedKey key = Registry.SOUNDS.getKey(s);
+			if (key != null && normalize(key.getKey()).equals(wanted))
+				return s;
+		}
+		return null;
+	}
+
+	private static String normalize(String name) {
+		return name.replaceAll("[^A-Za-z0-9]", "").toUpperCase();
 	}
 
 }

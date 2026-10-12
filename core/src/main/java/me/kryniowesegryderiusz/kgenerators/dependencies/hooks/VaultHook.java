@@ -48,6 +48,9 @@ public class VaultHook {
         }
     	
         RegisteredServiceProvider<Permission> rsp = Main.getInstance().getServer().getServicesManager().getRegistration(Permission.class);
+        if (rsp == null) {
+            return false;
+        }
         perms = rsp.getProvider();
         return perms != null;
     }

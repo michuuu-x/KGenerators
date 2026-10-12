@@ -1,5 +1,6 @@
 package me.kryniowesegryderiusz.kgenerators.generators.generator.objects;
 
+import me.kryniowesegryderiusz.kgenerators.utils.ChatUtils;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -8,6 +9,7 @@ import java.util.Map.Entry;
 import java.util.Random;
 import java.util.Set;
 
+import org.bukkit.Material;
 import org.bukkit.World;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.inventory.ItemFlag;
@@ -30,7 +32,6 @@ import me.kryniowesegryderiusz.kgenerators.utils.ItemUtils;
 import me.kryniowesegryderiusz.kgenerators.utils.immutable.Config;
 import me.kryniowesegryderiusz.kgenerators.utils.immutable.RandomSelector;
 import me.kryniowesegryderiusz.kgenerators.utils.objects.CustomBlockData;
-import com.cryptomorin.xseries.XMaterial;
 
 public class Generator {
 
@@ -112,23 +113,14 @@ public class Generator {
 			}
 			this.generatorItem = ItemUtils.parseItemStack(config.getString(generatorID + ".generator"),
 					"Generators file", true);
-			ArrayList<String> loreGot = new ArrayList<String>();
-			ArrayList<String> lore = new ArrayList<String>();
 			ItemMeta meta = (ItemMeta) this.generatorItem.getItemMeta();
-			meta.setDisplayName(
-					Main.getMultiVersion().getChatUtils().colorize(config.getString(generatorID + ".name")));
-			loreGot = (ArrayList<String>) config.getList(generatorID + ".lore");
-			for (String l : loreGot) {
-				l = Main.getMultiVersion().getChatUtils().colorize(l);
-				lore.add(l);
-			}
-			meta.setLore(lore);
-			lore.clear();
+			ChatUtils.setDisplayName(meta, config.getString(generatorID + ".name"));
+			ChatUtils.setLore(meta, (ArrayList<String>) config.getList(generatorID + ".lore"));
 			if (glow)
 				meta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
 			this.generatorItem.setItemMeta(meta);
 			if (glow)
-				this.generatorItem.addUnsafeEnchantment(Enchantment.LOOT_BONUS_BLOCKS, 1);
+				this.generatorItem.addUnsafeEnchantment(Enchantment.FORTUNE, 1);
 		} else {
 			Logger.error("Generator " + generatorID + " is lacking generator-item configuration");
 			error = true;
@@ -177,7 +169,7 @@ public class Generator {
 		if (config.contains(generatorID + ".placeholder")
 				&& !config.getString(generatorID + ".placeholder").isEmpty()) {
 			this.placeholder = CustomBlockData.load(config.getString(generatorID + ".placeholder"), "Generators file");
-			if (this.placeholder.getXMaterial() == XMaterial.AIR)
+			if (this.placeholder.getMaterial() == Material.AIR)
 				this.placeholder = null;
 		}
 
@@ -262,7 +254,7 @@ public class Generator {
 	}
 
 	public String getGeneratorItemName() {
-		return this.generatorItem.getItemMeta().getDisplayName();
+		return ChatUtils.getDisplayName(this.generatorItem);
 	}
 
 	public Upgrade getUpgrade() {

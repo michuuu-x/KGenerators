@@ -3,9 +3,19 @@ package me.kryniowesegryderiusz.kgenerators.dependencies.hooks;
 import org.bukkit.inventory.ItemStack;
 
 import de.tr7zw.changeme.nbtapi.NBT;
+import de.tr7zw.changeme.nbtapi.utils.MinecraftVersion;
 import me.kryniowesegryderiusz.kgenerators.logger.Logger;
 
 public class NBTAPIHook {
+
+	/**
+	 * Shaded NBT-API has its own bStats and update checker, both enabled by default.
+	 * Has to be called before the first NBT-API usage.
+	 */
+	public static void disableTelemetry() {
+		MinecraftVersion.disableBStats();
+		MinecraftVersion.disableUpdateCheck();
+	}
 
 	public static ItemStack addNBT(ItemStack item, String place, String key, String value) {
 

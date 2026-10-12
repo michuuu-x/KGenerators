@@ -7,14 +7,8 @@ import org.bukkit.Bukkit;
 import lombok.Getter;
 import me.kryniowesegryderiusz.kgenerators.Main;
 import me.kryniowesegryderiusz.kgenerators.dependencies.enums.Dependency;
-import me.kryniowesegryderiusz.kgenerators.dependencies.hooks.BentoBoxHook;
-import me.kryniowesegryderiusz.kgenerators.dependencies.hooks.FancyHologramsHook;
-import me.kryniowesegryderiusz.kgenerators.dependencies.hooks.IridiumSkyblockHook;
-import me.kryniowesegryderiusz.kgenerators.dependencies.hooks.JetsMinionsHook;
 import me.kryniowesegryderiusz.kgenerators.dependencies.hooks.LitMinionsHook;
-import me.kryniowesegryderiusz.kgenerators.dependencies.hooks.MinionsHook;
 import me.kryniowesegryderiusz.kgenerators.dependencies.hooks.PlayerPointsHook;
-import me.kryniowesegryderiusz.kgenerators.dependencies.hooks.SlimefunHook;
 import me.kryniowesegryderiusz.kgenerators.dependencies.hooks.SuperiorSkyblock2Hook;
 import me.kryniowesegryderiusz.kgenerators.dependencies.hooks.VaultHook;
 import me.kryniowesegryderiusz.kgenerators.dependencies.hooks.WildStackerHook;
@@ -41,11 +35,6 @@ public class DependenciesManager {
 			dependencies.add(Dependency.ITEMS_ADDER);
 		}
 
-		if (Bukkit.getPluginManager().getPlugin("EcoItems") != null) {
-			Logger.debugPluginLoad("Dependencies: Detected plugin EcoItems. Hooking into it.");
-			dependencies.add(Dependency.ECO_ITEMS);
-		}
-
 		if (VaultHook.setupEconomy()) {
 			Logger.debugPluginLoad("Dependencies: Detected Vault economy. Hooked into it.");
 			dependencies.add(Dependency.VAULT_ECONOMY);
@@ -58,62 +47,22 @@ public class DependenciesManager {
 		} else
 			Logger.warn("Dependencies: Vault permissions was not found! Some features could not work!");
 
-		if (Bukkit.getPluginManager().isPluginEnabled("BentoBox")) {
-			Logger.debugPluginLoad("Dependencies: Detected plugin BentoBox. Hooking into it.");
-			BentoBoxHook.setup();
-			dependencies.add(Dependency.BENTO_BOX);
-		}
-
-		if (Bukkit.getPluginManager().isPluginEnabled("IridiumSkyblock")) {
-			Logger.debugPluginLoad("Dependencies: Detected plugin IridiumSkyblock. Hooking into it.");
-			IridiumSkyblockHook.setup();
-			dependencies.add(Dependency.IRIDIUM_SKYBLOCK);
-		}
-
-		if (Bukkit.getPluginManager().isPluginEnabled("JetsMinions")) {
-			Logger.debugPluginLoad("Dependencies: Detected plugin JetsMinions. Hooking into it.");
-			Main.getInstance().getServer().getPluginManager().registerEvents(new JetsMinionsHook(), Main.getInstance());
-			dependencies.add(Dependency.JETS_MINIONS);
-		}
-		
 		if (Bukkit.getPluginManager().isPluginEnabled("LitMinions")) {
 			Logger.debugPluginLoad("Dependencies: Detected plugin LitMinions. Hooking into it.");
 			Main.getInstance().getServer().getPluginManager().registerEvents(new LitMinionsHook(), Main.getInstance());
 			dependencies.add(Dependency.LIT_MINIONS);
 		}
 
-		if (Bukkit.getPluginManager().isPluginEnabled("Minions-Revamped")) {
-			Logger.debugPluginLoad("Dependencies: Detected plugin Minions-Revamped. Hooking into it.");
-			Main.getInstance().getServer().getPluginManager().registerEvents(new MinionsHook(), Main.getInstance());
-			dependencies.add(Dependency.MINIONS);
-		}
-
-		if (Bukkit.getPluginManager().isPluginEnabled("Slimefun")) {
-			Logger.debugPluginLoad("Dependencies: Detected plugin Slimefun. Hooking into it.");
-			Main.getInstance().getServer().getPluginManager().registerEvents(new SlimefunHook(), Main.getInstance());
-			dependencies.add(Dependency.SLIMEFUN);
-		}
-		
 		if (Bukkit.getPluginManager().isPluginEnabled("MythicMobs")) {
 			Logger.debugPluginLoad("Dependencies: Detected plugin MythicMobs. Hooking into it.");
 			dependencies.add(Dependency.MYTHIC_MOBS);
 		}
 		
-		if (Bukkit.getPluginManager().isPluginEnabled("FactionsUUID")) {
-			Logger.debugPluginLoad("Dependencies: Detected plugin FactionsUUID. Hooking into it.");
-			dependencies.add(Dependency.FACTIONSUUID);
-		}
-
 		if (Bukkit.getPluginManager().isPluginEnabled("WorldEdit")) {
 			Logger.debugPluginLoad("Dependencies: Detected plugin WorldEdit. Hooking into it.");
 			dependencies.add(Dependency.WORLD_EDIT);
 		}
 
-		if (Bukkit.getPluginManager().isPluginEnabled("Oraxen")) {
-			Logger.debugPluginLoad("Dependencies: Detected plugin Oraxen. Hooking into it.");
-			dependencies.add(Dependency.ORAXEN);
-		}
-		
 		if (Bukkit.getPluginManager().isPluginEnabled("Nexo")) {
 			Logger.debugPluginLoad("Dependencies: Detected plugin Nexo. Hooking into it.");
 			dependencies.add(Dependency.NEXO);
@@ -130,16 +79,6 @@ public class DependenciesManager {
 			papiExpansion = new PlaceholdersAPIExpansion();
 			papiExpansion.register();
 			dependencies.add(Dependency.PLACEHOLDERAPI);
-		}
-		
-		if (Bukkit.getPluginManager().isPluginEnabled("MMOItems")) {
-			Logger.debugPluginLoad("Dependencies: Detected plugin MMOItems. Hooking into it.");
-			dependencies.add(Dependency.MMOITEMS);
-		}
-		
-		if (Bukkit.getPluginManager().isPluginEnabled("PlotSquared")) {
-			Logger.debugPluginLoad("Dependencies: Detected plugin PlotSquared. Hooking into it.");
-			dependencies.add(Dependency.PLOT_SQUARED);
 		}
 		
 		if (Bukkit.getPluginManager().isPluginEnabled("Lands")) {
@@ -164,20 +103,6 @@ public class DependenciesManager {
 			}
 		}
 
-		if (Bukkit.getPluginManager().isPluginEnabled("FancyHolograms")) {
-			Logger.debugPluginLoad("Dependencies: Detected plugin FancyHolograms. Hooked holograms into it.");
-			dependencies.add(Dependency.FANCY_HOLOGRAMS);
-			FancyHologramsHook.loadConfigValues();
-		} else if (Bukkit.getPluginManager().isPluginEnabled("DecentHolograms")) {
-			Logger.debugPluginLoad("Dependencies: Detected plugin DecentHolograms. Hooked holograms into it.");
-			dependencies.add(Dependency.DECENT_HOLOGRAMS);
-		} else if (Bukkit.getPluginManager().isPluginEnabled("HolographicDisplays")) {
-			Logger.debugPluginLoad("Dependencies: Detected plugin HolographicDisplays. Hooked holograms into it.");
-			dependencies.add(Dependency.HOLOGRAPHIC_DISPLAYS);
-		} else if (Bukkit.getPluginManager().isPluginEnabled("CMI")) {
-			Logger.debugPluginLoad("Dependencies: Detected plugin CMI. Hooked holograms into it.");
-			dependencies.add(Dependency.CMI_HOLOGRAMS);
-		}
 	}
 
 	public void onEnableDependenciesCheck() {

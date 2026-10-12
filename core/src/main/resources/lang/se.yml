@@ -1,94 +1,94 @@
 messages:
-  prefix: '&8[&6KGenerators&8] '
+  prefix: '<dark_gray>[<gold>KGenerators<dark_gray>] '
   generators:
     any:
-      owner-none: '&cIngen'
-      disabled: '&cGeneratorer är inaktiverade i den här världen!'
-      repaired: '&aGenerator reparerad framgångsrikt!'
-      no-longer-there: '&cGeneratorn finns inte längre där!'
+      owner-none: '<red>Ingen'
+      disabled: '<red>Generatorer är inaktiverade i den här världen!'
+      repaired: '<green>Generator reparerad framgångsrikt!'
+      no-longer-there: '<red>Generatorn finns inte längre där!'
     digging:
-      cant-here: '&cDu kan inte gräva genererade block här!'
-      only-gen: '&cDu kan endast gräva genererade block här!'
-      no-permission: '&cDu har inte tillstånd &8(&7<permission>&8)&c att gärva <generator>&c!'
+      cant-here: '<red>Du kan inte gräva genererade block här!'
+      only-gen: '<red>Du kan endast gräva genererade block här!'
+      no-permission: '<red>Du har inte tillstånd <dark_gray>(<gray><permission><dark_gray>)<red> att gärva <generator><red>!'
     crafting:
-      cant-use: '&cDu kan inte tillverka någonting från generator'
-      no-permission: '&cDu har inte tillstånd &8(&7<permission>&8)&c att tillverka <generator>&c!'
+      cant-use: '<red>Du kan inte tillverka någonting från generator'
+      no-permission: '<red>Du har inte tillstånd <dark_gray>(<gray><permission><dark_gray>)<red> att tillverka <generator><red>!'
     timeleft:
-      output: '&aDenna generator kommer att regenerera om &e<time>'
+      output: '<green>Denna generator kommer att regenerera om <yellow><time>'
     pick-up:
-      successful: '&e<generator> &aupplockad!'
-      cant-here: '&cDu kan inte plocka upp en generator här!'
-      no-permission: '&cDu har inte tillstånd &8(&7<permission>&8)&c att plocka upp
+      successful: '<yellow><generator> <green>upplockad!'
+      cant-here: '<red>Du kan inte plocka upp en generator här!'
+      no-permission: '<red>Du har inte tillstånd <dark_gray>(<gray><permission><dark_gray>)<red> att plocka upp
         denna typ av generator!'
     place:
-      cant-here: '&cDu kan inte placera en generator här!'
-      cant-place-block: '&cDu kan inte placera något block i generatorns ställe'
-      cant-place-double-below-block: '&cDu kan inte placera dubbel generator under blocket!'
-      cant-place-double-below-generator: '&cDu kan inte placera dubbel under en generator!'
-      no-permission: '&cDu har inte tillstånd &8(&7<permission>&8)&c att placera denna typ av generator!'
+      cant-here: '<red>Du kan inte placera en generator här!'
+      cant-place-block: '<red>Du kan inte placera något block i generatorns ställe'
+      cant-place-double-below-block: '<red>Du kan inte placera dubbel generator under blocket!'
+      cant-place-double-below-generator: '<red>Du kan inte placera dubbel under en generator!'
+      no-permission: '<red>Du har inte tillstånd <dark_gray>(<gray><permission><dark_gray>)<red> att placera denna typ av generator!'
     limits:
-      cant-place-more-type: '&cDu kan inte placera mer än &6<number> <generator> &cgeneratorer,
-        på grund av &6<limit>&c!'
-      cant-pick-up: '&cDu kan inte plocka upp en generator som  &6<owner>&cäger!'
-      cant-use: '&cDu kan inte använda en generator som &6<owner>&cäger!'
+      cant-place-more-type: '<red>Du kan inte placera mer än <gold><number> <generator> <red>generatorer,
+        på grund av <gold><limit><red>!'
+      cant-pick-up: '<red>Du kan inte plocka upp en generator som  <gold><owner><red>äger!'
+      cant-use: '<red>Du kan inte använda en generator som <gold><owner><red>äger!'
     protection:
-      cant-change-generator-item: '&cDu kan inte ändra generatorns artikel!'
+      cant-change-generator-item: '<red>Du kan inte ändra generatorns artikel!'
     menus:
-      cant-open-here: '&cDu kan inte öppna denna meny här!'
+      cant-open-here: '<red>Du kan inte öppna denna meny här!'
   economy:
-    no-economy-avaible: '&cDet finns inget ekonomiskt system tillgängligt!'
-    not-enough-money: '&cDu har inte tillräckligt med pengar! Du behöver &6<cost>&c!'
+    no-economy-avaible: '<red>Det finns inget ekonomiskt system tillgängligt!'
+    not-enough-money: '<red>Du har inte tillräckligt med pengar! Du behöver <gold><cost><red>!'
   upgrades:
-    upgraded: '&aDu uppgraderade &e<number> &agenerator för &e<costs>&a!'
-    gui-upgraded: '&cDu har inte &4<cost>&c!'
-    no-next-level: '&cDetta är max level för denna generator'
-    no-permission: '&cDu har inte tillstånd &8(&7<permission>&8)&c att uppgradera generatorn!'
-    not-a-generator: '&cDu håller inte i en generator!'
-    separator: '&7, &e'
+    upgraded: '<green>Du uppgraderade <yellow><number> <green>generator för <yellow><costs><green>!'
+    gui-upgraded: '<red>Du har inte <dark_red><cost><red>!'
+    no-next-level: '<red>Detta är max level för denna generator'
+    no-permission: '<red>Du har inte tillstånd <dark_gray>(<gray><permission><dark_gray>)<red> att uppgradera generatorn!'
+    not-a-generator: '<red>Du håller inte i en generator!'
+    separator: '<gray>, <yellow>'
   hooks:
     explode-pickaxe:
-      cannot-use-on-double: '&cDu kan inte använda explosions hacka på typen dubbel generator!'
+      cannot-use-on-double: '<red>Du kan inte använda explosions hacka på typen dubbel generator!'
   database:
-    error: '&cDatabas fel! Vänligen kontakta en Adminstratör'
+    error: '<red>Databas fel! Vänligen kontakta en Adminstratör'
   commands:
     any:
-      wrong: '&cFel kommando! Skriv /kgenerators för hjälp'
-      no-permission: '&cDu har inte tillstånd &8(&7<permission>&8)&c till att använda KGenerators
+      wrong: '<red>Fel kommando! Skriv /kgenerators för hjälp'
+      no-permission: '<red>Du har inte tillstånd <dark_gray>(<gray><permission><dark_gray>)<red> till att använda KGenerators
         kommandon!'
-      player-not-online: '&cSpelare är inte online'
-      player-doesnt-exist: '&cSpelare existerar inte'
-      generator-doesnt-exist: '&cDenna generator existerar inte'
-      menu-doesnt-exist: '&cDenna meny existerar inte'
-      console-only: '&cDetta kommando kan endast utföras av konsolen!'
+      player-not-online: '<red>Spelare är inte online'
+      player-doesnt-exist: '<red>Spelare existerar inte'
+      generator-doesnt-exist: '<red>Denna generator existerar inte'
+      menu-doesnt-exist: '<red>Denna meny existerar inte'
+      console-only: '<red>Detta kommando kan endast utföras av konsolen!'
     list:
-      header: '&aGenerators:'
-      list: '&8- <generator> &8(&7ID: <generatorID>&8)'
-      no-permission: '&cDu har inte tillstånd &8(&7<permission>&8)&c att visa generatorer'
+      header: '<green>Generators:'
+      list: '<dark_gray>- <generator> <dark_gray>(<gray>ID: <generatorID><dark_gray>)'
+      no-permission: '<red>Du har inte tillstånd <dark_gray>(<gray><permission><dark_gray>)<red> att visa generatorer'
       help: List all generators
     menu:
-      opened-others: '&aÖppnade &e<generator> <menu> meny &aför &e<player>'
-      error: '&cEtt fel uppstod, medans menyn var öppen! Kontakta en Adminstratör!'
-      no-permission: '&cDu har inte tillstånd &8(&7<permission>&8)&c att öppna meny!'
-      no-permission-others: '&cDu har inte tillstånd &8(&7<permission>&8)&c att öppna menyn för andra spelare!'
+      opened-others: '<green>Öppnade <yellow><generator> <menu> meny <green>för <yellow><player>'
+      error: '<red>Ett fel uppstod, medans menyn var öppen! Kontakta en Adminstratör!'
+      no-permission: '<red>Du har inte tillstånd <dark_gray>(<gray><permission><dark_gray>)<red> att öppna meny!'
+      no-permission-others: '<red>Du har inte tillstånd <dark_gray>(<gray><permission><dark_gray>)<red> att öppna menyn för andra spelare!'
       help: Öppnar menyn
     give:
-      generator-given: '&e<amount>x &a<generator> &avar given till &e<player>'
-      generator-recieved: '&aDu har mottagit &e<amount>x &a<generator>&a!'
-      usage: '&cAndvändning: &e/kgenerators give <player> <generator> [amount]'
-      no-permission: '&cDu har inte tillstånd &8(&7<permission>&8)&c att ge ut generatorer!'
+      generator-given: '<yellow><amount>x <green><generator> <green>var given till <yellow><player>'
+      generator-recieved: '<green>Du har mottagit <yellow><amount>x <green><generator><green>!'
+      usage: '<red>Andvändning: <yellow>/kgenerators give <player> <generator> [amount]'
+      no-permission: '<red>Du har inte tillstånd <dark_gray>(<gray><permission><dark_gray>)<red> att ge ut generatorer!'
       help: Ge en generator till en spelare
     getall:
-      recieved: '&aGenerator mottagen!'
-      no-permission: '&cDu har inte tillstånd &8(&7<permission>&8)&c att få alla generatorer!'
+      recieved: '<green>Generator mottagen!'
+      no-permission: '<red>Du har inte tillstånd <dark_gray>(<gray><permission><dark_gray>)<red> att få alla generatorer!'
       help: Få alla generatorer
     limits:
-      no-permission: '&cDu har inte tillstånd &8(&7<permission>&8)&c att öpnna begeränsnings menyn!'
+      no-permission: '<red>Du har inte tillstånd <dark_gray>(<gray><permission><dark_gray>)<red> att öpnna begeränsnings menyn!'
       help: Check limits
     actions:
-      no-permission: '&cDu har inte tillstånd &8(&7<permission>&8)&c att kolla handlingar!'
+      no-permission: '<red>Du har inte tillstånd <dark_gray>(<gray><permission><dark_gray>)<red> att kolla handlingar!'
       help: Check possible actions
-      header: '&aPossible actions for generators:'
-      list: '&6<action> &8- &e<sneak><mode><item>'
+      header: '<green>Possible actions for generators:'
+      list: '<gold><action> <dark_gray>- <yellow><sneak><mode><item>'
       sneak: 'smyg och '
       break: bryta block
       left-click: vänster klick
@@ -98,8 +98,8 @@ messages:
       gui: Öppna GUI
       time-left: Tid kvar
     timeleft:
-      no-generator: '&cDu tittar inte på en generator som väntar på att regenera!'
-      no-permission: '&cDu har inte tillstånd &8(&7<permission>&8)&c att kolla regenerings tid!'
+      no-generator: '<red>Du tittar inte på en generator som väntar på att regenera!'
+      no-permission: '<red>Du har inte tillstånd <dark_gray>(<gray><permission><dark_gray>)<red> att kolla regenerings tid!'
       help: Kolla hur lång tid det är kvar
       format:
         seconds: s
@@ -110,19 +110,19 @@ messages:
     upgrade:
       help: Uppgradera generator
     reload:
-      done: '&aPlugin omladdad! Kolla konsolen eller log.txt in plugin''''s katalog
+      done: '<green>Plugin omladdad! Kolla konsolen eller log.txt in plugin''''s katalog
         för möjliga fel!'
-      no-permission: '&cDu har inte tillstånd &8(&7<permission>&8)&c att ladda om plugin!'
+      no-permission: '<red>Du har inte tillstånd <dark_gray>(<gray><permission><dark_gray>)<red> att ladda om plugin!'
       help: Plugin omladdning
     debug:
-      done: '&aDin felsöknings URL är: &e<url>'
-      error: '&cEtt fel uppstod, medans en felsökning försökte genereas!'
-      no-permission: '&cDu har inte tillstånd &8(&7<permission>&8)&c att klistra in felsökning'
+      done: '<green>Felsökningsfilen sparades: <yellow><file>'
+      error: '<red>Ett fel uppstod, medans en felsökning försökte genereas!'
+      no-permission: '<red>Du har inte tillstånd <dark_gray>(<gray><permission><dark_gray>)<red> att klistra in felsökning'
     help:
-      label: '&6&lKGenerators &aCommands help:'
-      format: '&e/kgenerators <subcommand> &7<help>'
+      label: '<gold><bold>KGenerators <reset><green>Commands help:'
+      format: '<yellow>/kgenerators <subcommand> <gray><help>'
 holograms:
   remaining-time:
   - '<generator_name>'
-  - '&6Tid kvar:'
-  - '&e<time>'
+  - '<gold>Tid kvar:'
+  - '<yellow><time>'

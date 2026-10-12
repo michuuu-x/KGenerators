@@ -11,7 +11,7 @@ import me.kryniowesegryderiusz.kgenerators.logger.Logger;
 import me.kryniowesegryderiusz.kgenerators.settings.Settings;
 import me.kryniowesegryderiusz.kgenerators.utils.immutable.Config;
 import me.kryniowesegryderiusz.kgenerators.utils.immutable.ConfigManager;
-import com.cryptomorin.xseries.XMaterial;
+import org.bukkit.Material;
 
 public class FilesConverter {
 
@@ -59,7 +59,7 @@ public class FilesConverter {
 			add(file,
 					"#By default generator will generate block only on air. Here you can add blocks, which will be replaced by generated block.");
 			add(file, "can-generate-instead:");
-			for (XMaterial i : settings.getGeneratingWhitelist()) {
+			for (Material i : settings.getGeneratingWhitelist()) {
 				add(file, "  - " + i.name());
 			}
 			Logger.info("FilesConverter: Added can-generate-instead settings to config file");
@@ -198,6 +198,46 @@ public class FilesConverter {
 			add(file, "  #Set -1 to not update GUI");
 			add(file, "  gui-update: 20");
 			Logger.info("FilesConverter: Added intervals settings to config file");
+		}
+		
+		if (!config.contains("hologram")) {
+			add(file, "");
+			add(file, "#Holograms displayed above regenerating generators (enable them per generator in generators.yml)");
+			add(file, "#They are built in (text display entities), no additional plugin is needed");
+			add(file, "#Hologram lines are set in lang file (holograms.remaining-time)");
+			add(file, "#Changed values apply after reload, except \"enabled\", which needs server restart");
+			add(file, "hologram:");
+			add(file, "  #Set false to disable holograms completely");
+			add(file, "  enabled: true");
+			add(file, "  #Hologram position relative to its default spot - the bottom center of the block above the generated block (in blocks)");
+			add(file, "  #x: east (+) / west (-), y: up (+) / down (-), z: south (+) / north (-)");
+			add(file, "  position-offset:");
+			add(file, "    x: 0.0");
+			add(file, "    y: 0.2");
+			add(file, "    z: 0.0");
+			add(file, "  #How the text is rotated: FIXED, VERTICAL, HORIZONTAL, CENTER");
+			add(file, "  #CENTER - text always faces the player");
+			add(file, "  billboard: CENTER");
+			add(file, "  #Text alignment: CENTER, LEFT, RIGHT");
+			add(file, "  alignment: CENTER");
+			add(file, "  #Shadow under the text");
+			add(file, "  shadowed: false");
+			add(file, "  #Should hologram be saved with the chunk?");
+			add(file, "  #Recommended false - plugin creates holograms again on each start");
+			add(file, "  persistent: false");
+			add(file, "  #Visibility range as a multiplier of the standard render range (1.0 = standard)");
+			add(file, "  view-range: 1.0");
+			add(file, "  #Text background color: RGB components and opacity (0-255)");
+			add(file, "  #By default it is semi-transparent black, the same as in vanilla game");
+			add(file, "  background-color:");
+			add(file, "    red: 0");
+			add(file, "    green: 0");
+			add(file, "    blue: 0");
+			add(file, "    alpha: 64");
+			add(file, "  #Hologram scale");
+			add(file, "  #Scale is applied relatively to hologram position, so after changing it you might want to adjust position-offset");
+			add(file, "  scale: 1.0");
+			Logger.info("FilesConverter: Added hologram settings to config file");
 		}
 		
 		if (!config.contains("generator-item-matcher")) {

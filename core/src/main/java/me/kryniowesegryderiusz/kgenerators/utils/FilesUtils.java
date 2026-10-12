@@ -12,7 +12,10 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
+import org.bukkit.NamespacedKey;
+import org.bukkit.Registry;
 import org.bukkit.configuration.MemorySection;
+import org.bukkit.enchantments.Enchantment;
 import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
@@ -21,7 +24,6 @@ import me.kryniowesegryderiusz.kgenerators.Main;
 import me.kryniowesegryderiusz.kgenerators.dependencies.hooks.NBTAPIHook;
 import me.kryniowesegryderiusz.kgenerators.logger.Logger;
 import me.kryniowesegryderiusz.kgenerators.utils.immutable.Config;
-import com.cryptomorin.xseries.XEnchantment;
 
 public class FilesUtils {
 
@@ -148,9 +150,10 @@ public class FilesUtils {
 				for (String s : (ArrayList<String>) map.get("enchants")) {
 					if (s != null) {
 						String[] splitted = s.split(":");
-						Optional<XEnchantment> xeo = XEnchantment.of(splitted[0]);
-						if (xeo.isPresent()) {
-							item.addUnsafeEnchantment(xeo.get().get(), Integer.valueOf(splitted[1]));
+						NamespacedKey enchantKey = NamespacedKey.fromString(splitted[0].toLowerCase());
+						Enchantment enchantment = enchantKey == null ? null : Registry.ENCHANTMENT.get(enchantKey);
+						if (enchantment != null) {
+							item.addUnsafeEnchantment(enchantment, Integer.valueOf(splitted[1]));
 						} else
 							Logger.error(place + ": Cannot load enchantment! " + splitted[0] + " doesnt exist!");
 					}
@@ -165,15 +168,15 @@ public class FilesUtils {
 			}
 
 			if (map.containsKey("name"))
-				meta.setDisplayName(Main.getMultiVersion().getChatUtils().colorize((String) map.get("name")));
+				ChatUtils.setDisplayName(meta, (String) map.get("name"));
 
 			if (map.containsKey("lore")) {
 				ArrayList<String> lore = new ArrayList<>();
 				for (String s : (ArrayList<String>) map.get("lore")) {
 					if (s != null)
-						lore.add(Main.getMultiVersion().getChatUtils().colorize(s));
+						lore.add(s);
 				}
-				meta.setLore(lore);
+				ChatUtils.setLore(meta, lore);
 			}
 
 			if (map.containsKey("item-flags")) {

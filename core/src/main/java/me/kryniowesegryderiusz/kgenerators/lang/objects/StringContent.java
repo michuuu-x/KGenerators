@@ -50,7 +50,7 @@ public class StringContent implements Cloneable {
 				{
 					for (String as : stringContent.getLines())
 					{
-						newDesc.add(Main.getMultiVersion().getChatUtils().colorize(as));
+						newDesc.add(as);
 					}
 				}
 			}
@@ -93,7 +93,7 @@ public class StringContent implements Cloneable {
 		{
 			for (String s : (ArrayList<String>) config.getStringList(path))
 			{
-				lines.add(Main.getMultiVersion().getChatUtils().colorize(s));
+				lines.add(s);
 			}
 		}
 		else if (defaultContent != null)

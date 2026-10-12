@@ -114,6 +114,42 @@ intervals:
   #Set -1 to not update GUI
   gui-update: 20
 
+#Holograms displayed above regenerating generators (enable them per generator in generators.yml)
+#They are built in (text display entities), no additional plugin is needed
+#Hologram lines are set in lang file (holograms.remaining-time)
+#Changed values apply after reload, except "enabled", which needs server restart
+hologram:
+  #Set false to disable holograms completely
+  enabled: true
+  #Hologram position relative to its default spot - the bottom center of the block above the generated block (in blocks)
+  #x: east (+) / west (-), y: up (+) / down (-), z: south (+) / north (-)
+  position-offset:
+    x: 0.0
+    y: 0.2
+    z: 0.0
+  #How the text is rotated: FIXED, VERTICAL, HORIZONTAL, CENTER
+  #CENTER - text always faces the player
+  billboard: FIXED
+  #Text alignment: CENTER, LEFT, RIGHT
+  alignment: CENTER
+  #Shadow under the text
+  shadowed: true
+  #Should hologram be saved with the chunk?
+  #Recommended false - plugin creates holograms again on each start
+  persistent: false
+  #Visibility range as a multiplier of the standard render range (1.0 = standard)
+  view-range: 1.0
+  #Text background color: RGB components and opacity (0-255)
+  #By default it is semi-transparent black, the same as in vanilla game
+  background-color:
+    red: 0
+    green: 0
+    blue: 0
+    alpha: 0
+  #Hologram scale
+  #Scale is applied relatively to hologram position, so after changing it you might want to adjust position-offset
+  scale: 1.0
+
 #Debug related options. Support could be not provided if debug messages are not recorded
 debug:
   #All warnings that are displayed in console.

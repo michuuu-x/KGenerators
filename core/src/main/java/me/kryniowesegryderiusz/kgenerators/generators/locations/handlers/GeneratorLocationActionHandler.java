@@ -6,9 +6,7 @@ import java.util.Set;
 import org.bukkit.entity.Player;
 
 import me.kryniowesegryderiusz.kgenerators.Main;
-import me.kryniowesegryderiusz.kgenerators.dependencies.hooks.FactionsUUIDHook;
 import me.kryniowesegryderiusz.kgenerators.dependencies.hooks.LandsHook;
-import me.kryniowesegryderiusz.kgenerators.dependencies.hooks.PlotSquaredHook;
 import me.kryniowesegryderiusz.kgenerators.dependencies.hooks.WorldGuardHook;
 import me.kryniowesegryderiusz.kgenerators.generators.generator.objects.GeneratorAction;
 import me.kryniowesegryderiusz.kgenerators.generators.locations.handlers.enums.ActionType;
@@ -34,9 +32,7 @@ public class GeneratorLocationActionHandler {
 			if (e.getValue().requirementsMet(usedActionType, player)) {
 				
 				if (!WorldGuardHook.isPlayerAllowedToInteract(player, gLocation.getLocation())
-						|| !PlotSquaredHook.isPlayerAllowedToInteract(player, gLocation.getLocation())
-						|| !LandsHook.isPlayerAllowedToInteract(player, gLocation.getLocation())
-						|| !FactionsUUIDHook.isPlayerAllowedToInteract(player, gLocation.getLocation())) {
+						|| !LandsHook.isPlayerAllowedToInteract(player, gLocation.getLocation())) {
 						
 					Lang.getMessageStorage().send(player, Message.GENERATORS_ACTION_CANT_HERE);
 					

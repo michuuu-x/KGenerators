@@ -1,26 +1,17 @@
 package me.kryniowesegryderiusz.kgenerators;
 
-
-import java.util.HashMap;
-import java.util.Map;
-import java.util.concurrent.Callable;
-
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import dev.lone.itemsadder.api.ItemsAdder;
 import lombok.Getter;
-import me.kryniowesegryderiusz.kgenerators.addons.Addons;
-import me.kryniowesegryderiusz.kgenerators.addons.objects.Addon;
 import me.kryniowesegryderiusz.kgenerators.api.events.PluginDisabledEvent;
 import me.kryniowesegryderiusz.kgenerators.api.events.PluginEnabledEvent;
 import me.kryniowesegryderiusz.kgenerators.api.events.PluginReloadEvent;
 import me.kryniowesegryderiusz.kgenerators.data.DatabaseManager;
 import me.kryniowesegryderiusz.kgenerators.dependencies.DependenciesManager;
-import me.kryniowesegryderiusz.kgenerators.dependencies.enums.Dependency;
-import me.kryniowesegryderiusz.kgenerators.dependencies.hooks.BentoBoxHook;
-import me.kryniowesegryderiusz.kgenerators.dependencies.hooks.FancyHologramsHook;
 import me.kryniowesegryderiusz.kgenerators.dependencies.hooks.ItemsAdderHook;
+import me.kryniowesegryderiusz.kgenerators.dependencies.hooks.NBTAPIHook;
 import me.kryniowesegryderiusz.kgenerators.generators.generator.GeneratorsManager;
 import me.kryniowesegryderiusz.kgenerators.generators.holograms.HologramsManager;
 import me.kryniowesegryderiusz.kgenerators.generators.locations.PlacedGeneratorsManager;
@@ -43,7 +34,6 @@ import me.kryniowesegryderiusz.kgenerators.logger.Logger;
 import me.kryniowesegryderiusz.kgenerators.multiversion.MultiVersionManager;
 import me.kryniowesegryderiusz.kgenerators.settings.Settings;
 import me.kryniowesegryderiusz.kgenerators.utils.FilesConverter;
-import me.kryniowesegryderiusz.kgenerators.utils.immutable.Metrics;
 
 public class Main extends JavaPlugin {
 
@@ -67,7 +57,12 @@ public class Main extends JavaPlugin {
 	
     @Override
     public void onEnable() {
-    	
+
+    	if (!multiVersion.isSupported()) {
+    		this.getServer().getPluginManager().disablePlugin(this);
+    		return;
+    	}
+
     	dependencies.onEnableDependenciesCheck();
     	if (Bukkit.getPluginManager().getPlugin("ItemsAdder") != null && !ItemsAdder.areItemsLoaded()) {
     		Logger.warn("ItemsAdder is enabled, KGenerators loading postponed until IA is loaded");
@@ -83,7 +78,9 @@ public class Main extends JavaPlugin {
 	@Override
     public void onLoad() {
     	instance = this;
-    	
+
+    	NBTAPIHook.disableTelemetry();
+
     	Logger.setup();
     	
 		settings = new Settings();
@@ -108,6 +105,9 @@ public class Main extends JavaPlugin {
     		placedGenerators.onDisable();
     	}
     	
+    	if (holograms != null)
+    		holograms.onDisable();
+    	
     	Logger.info("Safely shutting down database.");
     	if (databases != null && databases.getDb() != null)
     		databases.getDb().closeConnection();
@@ -127,8 +127,8 @@ public class Main extends JavaPlugin {
     	limits = new LimitsManager();
     	Lang.loadFromFiles();
     	this.getServer().getPluginManager().callEvent(new PluginReloadEvent());
-    	if (Main.getDependencies().isEnabled(Dependency.FANCY_HOLOGRAMS))
-    		FancyHologramsHook.loadConfigValues();
+    	if (holograms != null)
+    		holograms.reload();
     	Logger.info("Reload: KGenerators reloaded successfully");
     }
     
@@ -174,58 +174,6 @@ public class Main extends JavaPlugin {
 			this.getServer().getPluginManager().registerEvents(new FurnaceSmeltListener(), this);
 			this.getServer().getPluginManager().registerEvents(new GeneratorProtectionListeners(), this);
 			//Chunk listeners were moved to PlacedGeneratorsManager
-			
-			/* 
-			 * Metrix
-			 */
-			Logger.debugPluginLoad("MainManager: Loading Metrix");
-			int pluginId = 7871;
-			Metrics metrics = new Metrics(this, pluginId);
-			metrics.addCustomChart(new Metrics.SingleLineChart("configured_generators", () -> Main.getGenerators().getAmount()));
-			metrics.addCustomChart(new Metrics.SingleLineChart("database_generators", () -> Main.getDatabases().getDb().getGeneratorsAmount()));
-			metrics.addCustomChart(new Metrics.SingleLineChart("loaded_generators", () -> Main.getPlacedGenerators().getLoadedGeneratorsAmount()));
-			metrics.addCustomChart(new Metrics.SimplePie("database_type", () -> {return Main.getSettings().getDbType().toString();}));
-			metrics.addCustomChart(new Metrics.AdvancedPie("features", new Callable<Map<String, Integer>>() {
-				@Override
-				public Map<String, Integer> call() throws Exception {
-		            Map<String, Integer> valueMap = new HashMap<>();
-		            if (Main.getLimits().hasLimits()) valueMap.put("Limits", 1);
-		            if (Main.getRecipes().hasRecipes()) valueMap.put("Recipes", 1);
-		            if (Main.getUpgrades().hasUpgrades()) valueMap.put("Upgrades", 1);
-		            if (Main.getSettings().isBlockDropToEq()) valueMap.put("DropToInventory", 1);
-		            return valueMap;
-				}
-			}));
-			metrics.addCustomChart(new Metrics.AdvancedPie("hooked_plugins", new Callable<Map<String, Integer>>() {
-				@Override
-				public Map<String, Integer> call() throws Exception {
-		            Map<String, Integer> valueMap = new HashMap<>();
-		            if (Main.getDependencies() != null) {
-		            	for (Dependency dep : Main.getDependencies().getDependencies()) {
-		            		valueMap.put(dep.toString(), 1);
-		            	}
-		            }
-		            return valueMap;
-				}
-			}));
-	        metrics.addCustomChart(new Metrics.DrilldownPie("complex_plugin_version", () -> {
-	            Map<String, Map<String, Integer>> map = new HashMap<>();
-	            String[] sVersion = this.getDescription().getVersion().split("-");
-	            Map<String, Integer> entry = new HashMap<>();
-	            entry.put(sVersion[1], 1);
-	            map.put(sVersion[0], entry);
-	            return map;
-	        }));
-			metrics.addCustomChart(new Metrics.AdvancedPie("addons", new Callable<Map<String, Integer>>() {
-				@Override
-				public Map<String, Integer> call() throws Exception {
-		            Map<String, Integer> valueMap = new HashMap<>();
-		            for (Addon a : Addons.getAddons()) {
-		            	valueMap.put(a.getName(), 1);
-		            }
-		            return valueMap;
-				}
-			}));
 			
 			Logger.info("MainManager: KGenerators loaded successfully");
 			

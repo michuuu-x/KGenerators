@@ -9,7 +9,7 @@
 #===== Change this to true to enable recipes =====
 #=================================================
 
-enabled: false
+enabled: true
 
 #===========================================================================
 #=====               Below you can find EXAMPLE-limit.                 ===== 

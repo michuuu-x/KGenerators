@@ -13,11 +13,6 @@ import org.bukkit.Bukkit;
 import lombok.Getter;
 import me.kryniowesegryderiusz.kgenerators.Main;
 import me.kryniowesegryderiusz.kgenerators.addons.events.HologramReplaceLinesEvent;
-import me.kryniowesegryderiusz.kgenerators.dependencies.enums.Dependency;
-import me.kryniowesegryderiusz.kgenerators.dependencies.objects.CMIHologramsProvider;
-import me.kryniowesegryderiusz.kgenerators.dependencies.objects.DecentHologramsProvider;
-import me.kryniowesegryderiusz.kgenerators.dependencies.objects.FancyHologramsProvider;
-import me.kryniowesegryderiusz.kgenerators.dependencies.objects.HolographicDisplaysProvider;
 import me.kryniowesegryderiusz.kgenerators.generators.generator.objects.Generator;
 import me.kryniowesegryderiusz.kgenerators.generators.holograms.interfaces.IHologramProvider;
 import me.kryniowesegryderiusz.kgenerators.generators.locations.objects.GeneratorLocation;
@@ -36,28 +31,20 @@ public class HologramsManager {
 
 		Logger.debugPluginLoad("HologramsManager: Setting up manager");
 
-		if (Main.getDependencies().isEnabled(Dependency.FANCY_HOLOGRAMS)) {
-			hologramProvider = new FancyHologramsProvider();
-			Logger.debugPluginLoad("Holograms: Enabling FancyHologramsProvider");
-		} else if (Main.getDependencies().isEnabled(Dependency.DECENT_HOLOGRAMS)) {
-			hologramProvider = new DecentHologramsProvider();
-			Logger.debugPluginLoad("Holograms: Enabling DecentHologramsProvider");
-		} else if (Main.getDependencies().isEnabled(Dependency.HOLOGRAPHIC_DISPLAYS)) {
-			hologramProvider = new HolographicDisplaysProvider();
-			Logger.debugPluginLoad("Holograms: Enabling HolographicDisplaysProvider");
-		} else if (Main.getDependencies().isEnabled(Dependency.CMI_HOLOGRAMS)) {
-			hologramProvider = new CMIHologramsProvider();
-			Logger.debugPluginLoad("Holograms: Enabling CMIHologramsProvider");
-		} else {
+		if (Main.getSettings().getHologram().isEnabled())
+			hologramProvider = Main.getMultiVersion().getHologramProvider();
+
+		if (hologramProvider == null) {
 			for (Map.Entry<String, Generator> e : Main.getGenerators().getEntrySet()) {
 				if ((e.getValue()).isHologram())
 					Logger.warn("Holograms: Generator " + e.getKey()
-							+ " has enabled holograms, but hologram provider was not found! Holograms wont work!");
+							+ " has enabled holograms, but holograms are disabled or unavailable! Holograms wont work!");
 			}
-		}
-		
-		if (hologramProvider == null)
 			return;
+		}
+
+		hologramProvider.start();
+		Logger.debugPluginLoad("Holograms: Enabling " + hologramProvider.getClass().getSimpleName());
 
 		Bukkit.getScheduler().scheduleSyncRepeatingTask(Main.getInstance(), new Runnable() {
 			public void run() {
@@ -91,6 +78,17 @@ public class HologramsManager {
 
 			}
 		}, 0L, Main.getSettings().getHologramUpdateFrequency() * 1L);
+	}
+
+	public void reload() {
+		if (hologramProvider != null)
+			hologramProvider.reload();
+	}
+
+	public void onDisable() {
+		if (hologramProvider != null)
+			hologramProvider.removeAll();
+		holograms.clear();
 	}
 
 	public void createRemainingTimeHologram(GeneratorLocation gLocation) {
@@ -133,7 +131,7 @@ public class HologramsManager {
 			if (s.contains("<time>"))
 				s = s.replaceAll("<time>", time);
 			if (s.contains("<generator_name>"))
-				s = s.replaceAll("<generator_name>", gLocation.getGenerator().getGeneratorItemName());
+				s = s.replace("<generator_name>", gLocation.getGenerator().getGeneratorItemName());
 
 			for (Entry<String, String> en : e.getReplacablesMap().entrySet()) {
 				s = s.replaceAll(en.getKey(), en.getValue());

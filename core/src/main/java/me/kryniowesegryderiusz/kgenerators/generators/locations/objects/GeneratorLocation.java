@@ -15,10 +15,7 @@ import lombok.Setter;
 import me.kryniowesegryderiusz.kgenerators.Main;
 import me.kryniowesegryderiusz.kgenerators.api.interfaces.IGeneratorLocation;
 import me.kryniowesegryderiusz.kgenerators.api.objects.AbstractGeneratedObject;
-import me.kryniowesegryderiusz.kgenerators.dependencies.hooks.BentoBoxHook;
-import me.kryniowesegryderiusz.kgenerators.dependencies.hooks.FactionsUUIDHook;
 import me.kryniowesegryderiusz.kgenerators.dependencies.hooks.LandsHook;
-import me.kryniowesegryderiusz.kgenerators.dependencies.hooks.PlotSquaredHook;
 import me.kryniowesegryderiusz.kgenerators.dependencies.hooks.SuperiorSkyblock2Hook;
 import me.kryniowesegryderiusz.kgenerators.generators.generator.enums.GeneratorType;
 import me.kryniowesegryderiusz.kgenerators.generators.generator.objects.Generator;
@@ -121,16 +118,13 @@ public class GeneratorLocation implements IGeneratorLocation {
 		String permission = "kgenerators.mine." + this.getGenerator().getId();
 		if (!player.hasPermission(permission)) {
 			Lang.getMessageStorage().send(player, Message.GENERATORS_DIGGING_NO_PERMISSION, "<permission>", permission,
-					"<generator>", this.getGenerator().getGeneratorItem().getItemMeta().getDisplayName());
+					"<generator>", this.getGenerator().getGeneratorItemName());
 			return false;
 		}
 
-		if (!BentoBoxHook.isAllowed(player, BentoBoxHook.Type.USE_FLAG, this.getGeneratedBlockLocation())
-				|| !SuperiorSkyblock2Hook.isAllowed(player, SuperiorSkyblock2Hook.Type.USE_FLAG,
+		if (!SuperiorSkyblock2Hook.isAllowed(player, SuperiorSkyblock2Hook.Type.USE_FLAG,
 						this.getGeneratedBlockLocation())
-				|| !PlotSquaredHook.isPlayerAllowedToMine(player, this.getGeneratedBlockLocation())
-				|| !LandsHook.isPlayerAllowedToMine(player, this.getGeneratedBlockLocation())
-				|| !FactionsUUIDHook.isPlayerAllowedToMine(player, this.getGeneratedBlockLocation())) {
+				|| !LandsHook.isPlayerAllowedToMine(player, this.getGeneratedBlockLocation())) {
 			Lang.getMessageStorage().send(player, Message.GENERATORS_DIGGING_CANT_HERE);
 			return false;
 		}
@@ -262,8 +256,11 @@ public class GeneratorLocation implements IGeneratorLocation {
 	 * Hologram
 	 */
 	
-	public Location getHologramLocation(int lines) {
-		return this.hologramLocation.clone().add(0, 0.2*(lines+1), 0);
+	/**
+	 * @return bottom center of the block, where hologram is displayed
+	 */
+	public Location getHologramBaseLocation() {
+		return this.hologramLocation.clone();
 	}
 	
 	public String getHologramUUID() {

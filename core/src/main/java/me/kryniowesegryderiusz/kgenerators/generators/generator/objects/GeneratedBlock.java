@@ -26,7 +26,7 @@ public class GeneratedBlock extends AbstractGeneratedObject {
 	@Override
 	protected boolean compareSameType(AbstractGeneratedObject generatedObject) {
 		GeneratedBlock gb = (GeneratedBlock) generatedObject;
-		return customBlockData.getXMaterial() == gb.getCustomBlockData().getXMaterial();
+		return customBlockData.getMaterial() == gb.getCustomBlockData().getMaterial();
 	}
 
 	@Override

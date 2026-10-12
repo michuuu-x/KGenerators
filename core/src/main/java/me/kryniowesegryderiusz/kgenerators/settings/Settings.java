@@ -17,18 +17,17 @@ import me.kryniowesegryderiusz.kgenerators.generators.locations.handlers.enums.A
 import me.kryniowesegryderiusz.kgenerators.logger.Logger;
 import me.kryniowesegryderiusz.kgenerators.settings.objects.Actions;
 import me.kryniowesegryderiusz.kgenerators.settings.objects.GeneratorItemMatcher;
+import me.kryniowesegryderiusz.kgenerators.settings.objects.HologramSettings;
 import me.kryniowesegryderiusz.kgenerators.settings.objects.Sound;
 import me.kryniowesegryderiusz.kgenerators.utils.ItemUtils;
 import me.kryniowesegryderiusz.kgenerators.utils.immutable.Config;
 import me.kryniowesegryderiusz.kgenerators.utils.immutable.ConfigManager;
-import com.cryptomorin.xseries.XMaterial;
-import com.cryptomorin.xseries.XSound;
 
 public class Settings {
 
 	@Setter
 	@Getter
-	private ArrayList<XMaterial> generatingWhitelist = new ArrayList<XMaterial>();
+	private ArrayList<Material> generatingWhitelist = new ArrayList<Material>();
 
 	@Setter
 	@Getter
@@ -68,19 +67,22 @@ public class Settings {
 	@Getter
 	private int guiUpdateFrequency = 20;
 
+	@Getter
+	private HologramSettings hologram = new HologramSettings();
+
 	@Setter
 	@Getter
 	private HashMap<ActionType, GeneratorAction> guis = new HashMap<ActionType, GeneratorAction>();
 
 	@Setter
 	@Getter
-	private Sound placeSound = new Sound(XSound.BLOCK_ANVIL_LAND);
+	private Sound placeSound = new Sound(org.bukkit.Sound.BLOCK_ANVIL_LAND);
 	@Setter
 	@Getter
-	private Sound pickupSound = new Sound(XSound.ENTITY_BAT_TAKEOFF);
+	private Sound pickupSound = new Sound(org.bukkit.Sound.ENTITY_BAT_TAKEOFF);
 	@Setter
 	@Getter
-	private Sound upgradeSound = new Sound(XSound.ENTITY_PLAYER_LEVELUP);
+	private Sound upgradeSound = new Sound(org.bukkit.Sound.ENTITY_PLAYER_LEVELUP);
 
 	@Setter
 	@Getter
@@ -153,12 +155,11 @@ public class Settings {
 
 		if (config.contains("can-generate-instead")) {
 			ArrayList<String> tempListString = new ArrayList<String>();
-			ArrayList<XMaterial> generatingWhitelist = new ArrayList<XMaterial>();
+			ArrayList<Material> generatingWhitelist = new ArrayList<Material>();
 			tempListString = (ArrayList<String>) config.getList("can-generate-instead");
 
 			for (String s : tempListString) {
-				XMaterial xm = ItemUtils.getXMaterial(s, "config.yml can-generate-instead", true);
-				generatingWhitelist.add(xm);
+				generatingWhitelist.add(ItemUtils.getMaterial(s, "config.yml can-generate-instead", true));
 			}
 			this.setGeneratingWhitelist(generatingWhitelist);
 		}
@@ -183,6 +184,8 @@ public class Settings {
 			this.setGenerationCheckFrequency(config.getInt("intervals.generation-check"));
 		if (config.contains("intervals.gui-update"))
 			this.setGuiUpdateFrequency(config.getInt("intervals.gui-update"));
+
+		this.hologram = new HologramSettings(config);
 
 		if (config.contains("pick-up-to-eq"))
 			this.setPickUpToEq(config.getBoolean("pick-up-to-eq"));
@@ -223,7 +226,7 @@ public class Settings {
 	}
 
 	public boolean isOnWhitelist(Material type) {
-		return this.generatingWhitelist.contains(XMaterial.matchXMaterial(type));
+		return this.generatingWhitelist.contains(type);
 	}
 
 }

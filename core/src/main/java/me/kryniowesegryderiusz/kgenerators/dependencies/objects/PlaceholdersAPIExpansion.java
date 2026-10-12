@@ -30,7 +30,7 @@ public class PlaceholdersAPIExpansion extends PlaceholderExpansion {
 
 	@Override
 	public @NotNull String getAuthor() {
-		return "Krynio";
+		return "Krynio, dcPlugins";
 	}
 
 	@Override

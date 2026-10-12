@@ -1,16 +1,11 @@
 package me.kryniowesegryderiusz.kgenerators.logger;
 
-import java.io.BufferedReader;
 import java.io.ByteArrayOutputStream;
-import java.io.DataOutputStream;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.io.InputStreamReader;
 import java.io.PrintStream;
 import java.io.PrintWriter;
-import java.net.URL;
-import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -19,9 +14,8 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
-
-import javax.net.ssl.HttpsURLConnection;
 
 import org.bukkit.command.CommandSender;
 import org.bukkit.plugin.Plugin;
@@ -169,7 +163,12 @@ public class Logger {
 		}
 	}
 
-	public static void debugPaste(CommandSender sender) {
+	/**
+	 * Saves debug information (server and plugin info, plugin log and configs) to the debug
+	 * folder of the plugin. Nothing is sent anywhere, so the file can be checked before it is
+	 * shared with someone.
+	 */
+	public static void debugDump(CommandSender sender) {
 		Main.getInstance().getServer().getScheduler().runTaskAsynchronously(Main.getInstance(), new Runnable() {
 			@Override
 			public void run() {
@@ -205,27 +204,28 @@ public class Logger {
 
 				fileString += "\n\n";
 
-				try {
-					fileString += getLinesFromFile(logFile) + "\n";
-					fileString += getLinesFromFile(configFile) + "\n";
-					fileString += getLinesFromFile(generatorsFile) + "\n";
-					fileString += getLinesFromFile(upgradesFile) + "\n";
-					fileString += getLinesFromFile(limitsFile) + "\n";
-					fileString += getLinesFromFile(recipesFile) + "\n";
+				fileString += getLinesFromFile(logFile) + "\n";
+				fileString += getLinesFromFile(configFile) + "\n";
+				fileString += getLinesFromFile(generatorsFile) + "\n";
+				fileString += getLinesFromFile(upgradesFile) + "\n";
+				fileString += getLinesFromFile(limitsFile) + "\n";
+				fileString += getLinesFromFile(recipesFile) + "\n";
 
-					for (Addon a : Addons.getAddons()) {
-						if (a.getConfigs() != null) {
-							for (String f : a.getConfigs()) {
-								fileString += getLinesFromFile(f) + "\n";
-							}
+				for (Addon a : Addons.getAddons()) {
+					if (a.getConfigs() != null) {
+						for (String f : a.getConfigs()) {
+							fileString += getLinesFromFile(f) + "\n";
 						}
 					}
+				}
 
-					String url = postHaste(sender, fileString);
-					if (url != null) {
-						Lang.getMessageStorage().send(sender, Message.COMMANDS_DEBUG_DONE, "<url>", url);
-					}
-
+				try {
+					FilesUtils.mkdir("debug");
+					String name = "debug/debug-" + new SimpleDateFormat("yyyyMMdd-HHmmss").format(new Date()) + ".txt";
+					Files.write(new File(Main.getInstance().getDataFolder(), name).toPath(),
+							fileString.getBytes(StandardCharsets.UTF_8));
+					Lang.getMessageStorage().send(sender, Message.COMMANDS_DEBUG_DONE, "<file>",
+							Main.getInstance().getDataFolder().getPath().replace(File.separatorChar, '/') + "/" + name);
 				} catch (IOException e) {
 					Lang.getMessageStorage().send(sender, Message.COMMANDS_DEBUG_ERROR);
 					Logger.error(e);
@@ -234,58 +234,30 @@ public class Logger {
 		});
 	}
 
-	private static String getLinesFromFile(String file) throws IOException {
+	/**
+	 * @return file content under a header, or the reason, why it could not be read. One missing
+	 *         file should not stop the whole debug output
+	 */
+	private static String getLinesFromFile(String file) {
 		String fileStrings = "########################################\n########## " + file
 				+ " ##########\n########################################\n\n";
-		List<String> lines = Files.readAllLines(Paths.get(Main.getInstance().getDataFolder().getPath(), file),
-				Charset.defaultCharset());
-		for (String l : lines) {
-			if (!l.contains("password"))
-				fileStrings += l + "\n";
+		try {
+			List<String> lines = Files.readAllLines(Paths.get(Main.getInstance().getDataFolder().getPath(), file),
+					StandardCharsets.UTF_8);
+			for (String l : lines) {
+				if (!isDatabaseCredential(l))
+					fileStrings += l + "\n";
+			}
+		} catch (IOException e) {
+			fileStrings += "Cannot read this file: " + e + "\n";
 		}
 		return fileStrings;
-
 	}
 
-	private static String postHaste(CommandSender sender, String text) {
-		
-		String response = null;
-		
-		try {
-			byte[] postData = text.getBytes(StandardCharsets.UTF_8);
-			int postDataLength = postData.length;
-	
-			String requestURL = "https://hastebin.com/documents";
-			URL url = new URL(requestURL);
-			HttpsURLConnection conn = (HttpsURLConnection) url.openConnection();
-			conn.setDoOutput(true);
-			conn.setInstanceFollowRedirects(false);
-			conn.setRequestMethod("POST");
-			conn.setRequestProperty("User-Agent", "Hastebin Java Api");
-			conn.setRequestProperty("Content-Length", Integer.toString(postDataLength));
-			conn.setRequestProperty("content-type", "text/plain");
-			conn.setRequestProperty("Authorization", "Bearer b9669ab4ea83f533d3c1faa80586fec599ebe87d4be9473a2e63cd33693eb7c57fd29312f683d7e259649e89d42b6a1911bcea1437bbe4ace53ef8a159942711");
-			conn.setUseCaches(false);
-			
-			DataOutputStream wr;
-			wr = new DataOutputStream(conn.getOutputStream());
-			wr.write(postData);
-			BufferedReader reader = new BufferedReader(new InputStreamReader(conn.getInputStream()));
-			response = reader.readLine();
-	
-			if (response != null && response.contains("\"key\"")) {
-				response = response.substring(response.indexOf(":") + 2, response.length() - 2);
-	
-				String postURL = "https://hastebin.com/share/";
-				response = postURL + response;
-			}
-		
-		} catch (IOException e) {
-			Lang.getMessageStorage().send(sender, Message.COMMANDS_DEBUG_ERROR);
-			Logger.error(e);
-		}
-
-		return response;
+	/** Database connection details are not needed to debug anything */
+	private static boolean isDatabaseCredential(String line) {
+		String key = line.trim().toLowerCase(Locale.ROOT);
+		return key.contains("password") || key.startsWith("username:") || key.startsWith("host:");
 	}
 
 }

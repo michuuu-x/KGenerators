@@ -1,263 +1,263 @@
 generator:
-  name: §9<generator_name>
+  name: <blue><generator_name>
   slots: 45
   filler:
     enabled: true
     item: GRAY_STAINED_GLASS_PANE
-    name: §r
+    name: <reset>
     lore: []
     slots: 0,1,2,3,4,5,6,7,8,9,17,18,26,27,35,36,37,38,39,40,41,42,43,44
     glow: false
   time-left:
     enabled: true
     item: CLOCK
-    name: §aThời gian còn lại để tái tạo
+    name: <green>Thời gian còn lại để tái tạo
     lore:
-    - §a<time>
+    - <green><time>
     slots: '21'
     glow: false
   owner:
     enabled: true
     item: BOOK
-    name: §aChủ máy tái tạo
+    name: <green>Chủ máy tái tạo
     lore:
-    - §e<owner>
+    - <yellow><owner>
     slots: '22'
     glow: false
   pick-up:
     enabled: true
     item: BARRIER
-    name: §aLấy lại
+    name: <green>Lấy lại
     lore:
-    - §eNhấn để lấy lại máy
+    - <yellow>Nhấn để lấy lại máy
     slots: '23'
     glow: false
   quit:
     enabled: true
     item: ARROW
-    name: §cThoát
+    name: <red>Thoát
     lore:
-    - §6Thoát menu
+    - <gold>Thoát menu
     slots: '40'
     glow: false
   reset:
     enabled: true
     item: MUSIC_DISC_11
-    name: §cReset máy tái tạo
+    name: <red>Reset máy tái tạo
     lore:
-    - §6Máy tái tạo này dường như bị hỏng!
-    - §6Nhấn để sửa chữa
+    - <gold>Máy tái tạo này dường như bị hỏng!
+    - <gold>Nhấn để sửa chữa
     slots: '13'
     glow: false
   upgrade:
     enabled: true
     item: EXPERIENCE_BOTTLE
-    name: §cNâng cấp máy tái tạo
+    name: <red>Nâng cấp máy tái tạo
     lore:
-    - §6Nhấn để nâng cấp máy tái tạo!
+    - <gold>Nhấn để nâng cấp máy tái tạo!
     - ''
-    - '§6Lần nâng cấp tiếp theo: §e<next_generator>'
-    - '§6Giá trị:'
+    - '<gold>Lần nâng cấp tiếp theo: <yellow><next_generator>'
+    - '<gold>Giá trị:'
     - <costs>
     slots: '31'
     glow: false
   upgrade-maxed:
     enabled: true
     item: EXPERIENCE_BOTTLE
-    name: §cMáy tại tạo ở mức tối đa
+    name: <red>Máy tại tạo ở mức tối đa
     lore:
-    - §6Máy tại tạo của bạn đã đạt
-    - §6mức tối đa để nâng cấp
+    - <gold>Máy tại tạo của bạn đã đạt
+    - <gold>mức tối đa để nâng cấp
     slots: '31'
     glow: false
 main:
-  name: §9Generators
+  name: <blue>Generators
   slots: 45
   filler:
     enabled: true
     item: GRAY_STAINED_GLASS_PANE
-    name: §r
+    name: <reset>
     lore: []
     slots: 0,1,2,3,4,5,6,7,8,36,37,38,39,40,41,42,43,44
     glow: false
   generator:
     enabled: true
     item: <generator>
-    name: §a<generator_name>
+    name: <green><generator_name>
     lore:
-    - '§6Chuột trái:'
-    - §eKiểm tra xem máy tái tạo cái gì
+    - '<gold>Chuột trái:'
+    - <yellow>Kiểm tra xem máy tái tạo cái gì
     slots: 9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35
     glow: false
   limits:
     enabled: true
     item: PLAYER_HEAD
-    name: §aGiới hạn
+    name: <green>Giới hạn
     lore:
-    - §eNhấn để kiểm tra giới hạn
+    - <yellow>Nhấn để kiểm tra giới hạn
     slots: '8'
     glow: false
   quit:
     enabled: true
     item: BARRIER
-    name: §cThoát
+    name: <red>Thoát
     lore:
-    - §6Thoát khỏi menu
+    - <gold>Thoát khỏi menu
     slots: '40'
     glow: false
   page:
     previous:
       enabled: true
       item: ARROW
-      name: §cTrang trước
+      name: <red>Trang trước
       lore:
-      - §6Nhấn để trở lại
-      - §6trang trước đó
+      - <gold>Nhấn để trở lại
+      - <gold>trang trước đó
       slots: '38'
       glow: false
     next:
       enabled: true
       item: ARROW
-      name: §cTrang sau
+      name: <red>Trang sau
       lore:
-      - §6Nhấn để chuyển
-      - §6sang trang sau
+      - <gold>Nhấn để chuyển
+      - <gold>sang trang sau
       slots: '42'
       glow: false
 generated-objects:
-  name: '§9Tái tạo:'
+  name: '<blue>Tái tạo:'
   slots: 45
   filler:
     enabled: true
     item: GRAY_STAINED_GLASS_PANE
-    name: §r
+    name: <reset>
     lore: []
     slots: 0,1,2,3,4,5,6,7,8,36,37,38,39,40,41,42,43,44
     glow: false
   generated-object:
     enabled: true
     item: <generated_object>
-    name: §a<generated_object_name>
+    name: <green><generated_object_name>
     lore:
     - <generated_object_lore>
     - ''
     - <generated_object_type>
-    - '§6Tỉ lệ: §e<chance>%'
+    - '<gold>Tỉ lệ: <yellow><chance>%'
     - <generated_object_custom_drops>
     slots: 9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35
     glow: false
   back:
     enabled: true
     item: ARROW
-    name: §cTrở lại
+    name: <red>Trở lại
     lore:
-    - §6Quay lại danh
-    - §6sách máy tái tạo
+    - <gold>Quay lại danh
+    - <gold>sách máy tái tạo
     slots: '40'
     glow: false
 recipe:
-  name: §9Công thức
+  name: <blue>Công thức
   slots: 45
   filler:
     enabled: true
     item: GRAY_STAINED_GLASS_PANE
-    name: §r
+    name: <reset>
     lore: []
     slots: 0,1,2,3,4,5,6,7,8,36,37,38,39,40,41,42,43,44
     glow: false
   ingredients:
     enabled: true
     item: <block>
-    name: §a<block_name>
+    name: <green><block_name>
     lore: []
     slots: 10,11,12,19,20,21,28,29,30
     glow: false
   result:
     enabled: true
     item: <generator>
-    name: §a<generator_name>
+    name: <green><generator_name>
     lore: []
     slots: '25'
     glow: false
   marker:
     enabled: true
     item: CRAFTING_TABLE
-    name: §aChế tạo
+    name: <green>Chế tạo
     lore: []
     slots: 14,23,32
     glow: false
   back:
     enabled: true
     item: ARROW
-    name: §cTrở lại
+    name: <red>Trở lại
     lore:
-    - §6Quay lại danh
-    - §6sách máy tái tạo
+    - <gold>Quay lại danh
+    - <gold>sách máy tái tạo
     slots: '40'
     glow: false
 upgrade:
-  name: §9Nâng cấp
+  name: <blue>Nâng cấp
   slots: 45
   filler:
     enabled: true
     item: GRAY_STAINED_GLASS_PANE
-    name: §r
+    name: <reset>
     lore: []
     slots: 0,1,2,3,4,5,6,7,8,36,37,38,39,40,41,42,43,44
     glow: false
   ingredient:
     enabled: true
     item: <generator>
-    name: §a<generator_name>
+    name: <green><generator_name>
     lore: []
     slots: '20'
     glow: false
   result:
     enabled: true
     item: <generator>
-    name: §a<generator_name>
+    name: <green><generator_name>
     lore: []
     slots: '24'
     glow: false
   marker:
     enabled: true
     item: EXPERIENCE_BOTTLE
-    name: §aNâng cấp
+    name: <green>Nâng cấp
     lore:
-    - §6Để nâng cấp máy tái
-    - §6tạo thì bạn hãy gõ
-    - §e/kgenerators upgrade
-    - §6hoặc dùng trong gui máy
+    - <gold>Để nâng cấp máy tái
+    - <gold>tạo thì bạn hãy gõ
+    - <yellow>/kgenerators upgrade
+    - <gold>hoặc dùng trong gui máy
     - ''
-    - '§6Giá:'
+    - '<gold>Giá:'
     - <costs>
     slots: 13,22,31
     glow: false
   back:
     enabled: true
     item: ARROW
-    name: §cTrở lại
+    name: <red>Trở lại
     lore:
-    - §6Quay lại danh
-    - §6sách máy tái tạo
+    - <gold>Quay lại danh
+    - <gold>sách máy tái tạo
     slots: '40'
     glow: false
 limits:
-  name: §9Giới hạn
+  name: <blue>Giới hạn
   slots: 45
   filler:
     enabled: true
     item: GRAY_STAINED_GLASS_PANE
-    name: §r
+    name: <reset>
     lore: []
     slots: 0,1,2,3,4,5,6,7,8,36,37,38,39,40,41,42,43,44
     glow: false
   limit:
     enabled: true
     item: <limit_display_item>
-    name: §a<limit_name>
+    name: <green><limit_name>
     lore:
-    - §6Bạn đã đặt §e<amount>§6/§e<limit>§6 giới hạn của máy
+    - <gold>Bạn đã đặt <yellow><amount><gold>/<yellow><limit><gold> giới hạn của máy
     - <generators_list>
     - <is_only_owner_use>
     - <is_only_owner_pick_up>
@@ -266,55 +266,55 @@ limits:
   back:
     enabled: true
     item: ARROW
-    name: §cTrở lại
+    name: <red>Trở lại
     lore:
-    - §6Quay lại danh
-    - §6sách máy tái tạo
+    - <gold>Quay lại danh
+    - <gold>sách máy tái tạo
     slots: '40'
     glow: false
 additional-lines:
   recipe:
     menu-how-to:
     - ''
-    - '&6Chuột phải:'
-    - '&Kiểm tra công thức'
+    - '<gold>Chuột phải:'
+    - '<obfuscated>iểm tra công thức'
   upgrades:
     menu-how-to:
     - ''
-    - '&6Right click:'
-    - '&6Kiểm tra cách nào'
-    - '&eđể nâng cấp'
+    - '<gold>Right click:'
+    - '<gold>Kiểm tra cách nào'
+    - '<yellow>để nâng cấp'
     upgrade-cost:
-    - '&8- &7<cost>'
+    - '<dark_gray>- <gray><cost>'
   generated-object-custom-drops:
     command:
-      - '&8- &6Lệnh: &e<command>'
+      - '<dark_gray>- <gold>Lệnh: <yellow><command>'
     custom-drops:
       - ''
-      - '&6Custom drops:'
-      - '&8- &6Rơi từ: &e<custom_drops_source>'
+      - '<gold>Custom drops:'
+      - '<dark_gray>- <gold>Rơi từ: <yellow><custom_drops_source>'
       - <custom_drops_money>
       - <custom_drops_exp>
       - <custom_drops_commands>
     exp:
-      - '&8- &6Exp: &e<exp> xp'
+      - '<dark_gray>- <gold>Exp: <yellow><exp> xp'
     money:
-      - '&8- &6Money: &e<money>'
+      - '<dark_gray>- <gold>Money: <yellow><money>'
   generated-object-type:
     item:
-    - '&6Tái tạo: &evật phẩm'
+    - '<gold>Tái tạo: <yellow>vật phẩm'
     block:
-    - '&6Tái tạo: &ekhối'
+    - '<gold>Tái tạo: <yellow>khối'
     custom-drops:
-    - '&6Tái tạo: &ecustom drops'
+    - '<gold>Tái tạo: <yellow>custom drops'
     entity:
-    - '&6Tái tạo: &econ vật'
+    - '<gold>Tái tạo: <yellow>con vật'
   limits:
     generator-list:
-    - '&8- &e<generator_name>'
+    - '<dark_gray>- <yellow><generator_name>'
     all-generators:
-    - '&eTất cả máy tái tạo'
+    - '<yellow>Tất cả máy tái tạo'
     only-owner-pick-up:
-    - '&cChỉ chủ máy có thể lấy máy'
+    - '<red>Chỉ chủ máy có thể lấy máy'
     only-owner-use:
-    - '&cChỉ chủ máy có thể sử dụng máy.'
+    - '<red>Chỉ chủ máy có thể sử dụng máy.'

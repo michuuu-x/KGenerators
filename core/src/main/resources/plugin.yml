@@ -1,12 +1,12 @@
 main: me.kryniowesegryderiusz.kgenerators.Main
 name: KGenerators
 version: "${project.version}-#${BUILD_NUMBER}"
-author: Kryniowesegryderiusz (Krynio_ on spigot)
+authors: ["Kryniowesegryderiusz (Krynio_ on spigot)", "dcPlugins"]
 website: https://www.spigotmc.org/resources/79246/
 description: Create your custom generators
 loadbefore: [SuperiorSkyblock2]
 softdepend: [ItemsAdder, PlaceholderAPI]
-api-version: 1.13
+api-version: "26.2"
 commands:
   kgenerators:
     aliases: ["kgen", "gen"]

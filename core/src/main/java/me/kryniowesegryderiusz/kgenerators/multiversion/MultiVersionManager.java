@@ -1,18 +1,31 @@
 package me.kryniowesegryderiusz.kgenerators.multiversion;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 import lombok.Getter;
 import me.kryniowesegryderiusz.kgenerators.Main;
+import me.kryniowesegryderiusz.kgenerators.generators.holograms.interfaces.IHologramProvider;
 import me.kryniowesegryderiusz.kgenerators.logger.Logger;
-import me.kryniowesegryderiusz.kgenerators.multiversion.interfaces.ActionBar;
 import me.kryniowesegryderiusz.kgenerators.multiversion.interfaces.BlocksUtils;
-import me.kryniowesegryderiusz.kgenerators.multiversion.interfaces.ChatUtils;
 import me.kryniowesegryderiusz.kgenerators.multiversion.interfaces.RecipesLoader;
 import me.kryniowesegryderiusz.kgenerators.multiversion.interfaces.SkullUtils;
 import me.kryniowesegryderiusz.kgenerators.multiversion.interfaces.WorldGuardUtils;
 
+/**
+ * Loads the implementations of the multiversion interfaces. Only Minecraft 26.2+ is supported,
+ * so there is a single set of implementations (module v26_3). They are loaded by name, as the
+ * module depends on core and not the other way around.
+ */
 public class MultiVersionManager {
 
-	private short minor;
+	private static final int MIN_SUPPORTED_MAJOR = 26;
+	private static final int MIN_SUPPORTED_MINOR = 2;
+	private static final Pattern VERSION_PATTERN = Pattern.compile("^(\\d+)\\.(\\d+)");
+
+	/** False, if server runs Minecraft older than 26.2. Checked in Main#onEnable. */
+	@Getter
+	private boolean supported = true;
 
 	@Getter
 	private RecipesLoader recipesLoader;
@@ -21,91 +34,36 @@ public class MultiVersionManager {
 	@Getter
 	private WorldGuardUtils worldGuardUtils;
 	@Getter
-	private ActionBar actionBar;
-	@Getter
-	private ChatUtils chatUtils;
-	@Getter
 	private SkullUtils skullUtils;
+	@Getter
+	private IHologramProvider hologramProvider;
 
 	public MultiVersionManager() {
 		try {
 			String serverVersion = Main.getInstance().getServer().getVersion();
 			serverVersion = serverVersion.split("MC: ")[1];
 			serverVersion = serverVersion.split("\\)")[0];
-			String[] serverVersionSplitted = serverVersion.split("\\.");
-			minor = Short.valueOf(serverVersionSplitted[1]);
-			Logger.debugMultiVersionManager("MultiVersionManager: Found version " + serverVersion + " with minor " + minor);
-			
+			Logger.debugMultiVersionManager("MultiVersionManager: Found version " + serverVersion);
+
+			if (!isSupportedVersion(serverVersion)) {
+				supported = false;
+				Logger.error("MultiVersionManager: Minecraft " + serverVersion + " is not supported! KGenerators requires Minecraft " + MIN_SUPPORTED_MAJOR + "." + MIN_SUPPORTED_MINOR + " or higher.");
+				return;
+			}
+
 			String packageName = Main.class.getPackage().getName() + ".multiversion";
 
-			String recipesPackage;
-			String blocksPackage;
-			String wgPackage;
-			String actionBarPackage;
-			String chatPackage;
-			String skullPackage;
-
-			if (minor == 8) {
-				recipesPackage = packageName + ".RecipesLoader_1_8";
-				blocksPackage = packageName + ".BlocksUtils_1_8";
-				wgPackage = packageName + ".WorldGuardUtils_1_8";
-				actionBarPackage = packageName + ".ActionBar_1_8";
-				chatPackage = packageName + ".ChatUtils_1_8";
-				skullPackage = packageName + ".SkullUtils_1_8";
-			} else if (minor == 9 || minor == 10 || minor == 11) {
-				recipesPackage = packageName + ".RecipesLoader_1_8";
-				blocksPackage = packageName + ".BlocksUtils_1_8";
-				wgPackage = packageName + ".WorldGuardUtils_1_8";
-				actionBarPackage = packageName + ".ActionBar_1_9";
-				chatPackage = packageName + ".ChatUtils_1_8";
-				skullPackage = packageName + ".SkullUtils_1_8";
-			} else if (minor == 12) {
-				recipesPackage = packageName + ".RecipesLoader_1_12";
-				blocksPackage = packageName + ".BlocksUtils_1_8";
-				wgPackage = packageName + ".WorldGuardUtils_1_8";
-				actionBarPackage = packageName + ".ActionBar_1_9";
-				chatPackage = packageName + ".ChatUtils_1_8";
-				skullPackage = packageName + ".SkullUtils_1_8";
-			} else if (minor == 13 || minor == 14 || minor == 15) {
-				recipesPackage = packageName + ".RecipesLoader_1_13";
-				blocksPackage = packageName + ".BlocksUtils_1_13";
-				wgPackage = packageName + ".WorldGuardUtils_1_13";
-				actionBarPackage = packageName + ".ActionBar_1_9";
-				chatPackage = packageName + ".ChatUtils_1_8";
-				skullPackage = packageName + ".SkullUtils_1_8";
-			} else if (minor == 16 || minor == 17 || minor == 18 || minor == 19 || minor == 20) {
-				recipesPackage = packageName + ".RecipesLoader_1_13";
-				blocksPackage = packageName + ".BlocksUtils_1_13";
-				wgPackage = packageName + ".WorldGuardUtils_1_13";
-				actionBarPackage = packageName + ".ActionBar_1_9";
-				chatPackage = packageName + ".ChatUtils_1_16";
-				skullPackage = packageName + ".SkullUtils_1_8";
-			} else {
-				recipesPackage = packageName + ".RecipesLoader_1_13";
-				blocksPackage = packageName + ".BlocksUtils_1_13";
-				wgPackage = packageName + ".WorldGuardUtils_1_13";
-				actionBarPackage = packageName + ".ActionBar_1_9";
-				chatPackage = packageName + ".ChatUtils_1_16";
-				skullPackage = packageName + ".SkullUtils_1_21";
-			}
-			
 			try {
-				this.recipesLoader = (RecipesLoader) Class.forName(recipesPackage).newInstance();
-				this.blocksUtils = (BlocksUtils) Class.forName(blocksPackage).newInstance();
+				this.recipesLoader = (RecipesLoader) Class.forName(packageName + ".RecipesLoader_26_3").newInstance();
+				this.blocksUtils = (BlocksUtils) Class.forName(packageName + ".BlocksUtils_26_3").newInstance();
 
 				if (Main.getInstance().getServer().getPluginManager().getPlugin("WorldGuard") != null) {
-					
-					if (wgPackage.contains("1_8") && Main.getInstance().getServer().getPluginManager().getPlugin("WorldGuard").getDescription().getVersion().equals("6.1")) {
-						Logger.error("MultiVersionManager: You are using unsupported WorldGuard version! Use WorldGuard 6.2 or higher!");
-					} else {
-						this.worldGuardUtils = (WorldGuardUtils) Class.forName(wgPackage).newInstance();
-						this.worldGuardUtils.worldGuardFlagsAdd();
-					}
+					this.worldGuardUtils = (WorldGuardUtils) Class.forName(packageName + ".WorldGuardUtils_26_3").newInstance();
+					this.worldGuardUtils.worldGuardFlagsAdd();
 				}
 
-				this.actionBar = (ActionBar) Class.forName(actionBarPackage).newInstance();
-				this.chatUtils = (ChatUtils) Class.forName(chatPackage).newInstance();
-				this.skullUtils = (SkullUtils) Class.forName(skullPackage).newInstance();
+				this.skullUtils = (SkullUtils) Class.forName(packageName + ".SkullUtils_26_3").newInstance();
+				this.hologramProvider = (IHologramProvider) Class.forName(packageName + ".HologramProvider_26_3").newInstance();
 
 			} catch (InstantiationException | IllegalAccessException | ClassNotFoundException e3) {
 				Logger.error(e3);
@@ -115,10 +73,18 @@ public class MultiVersionManager {
 		}
 	}
 
-	public boolean isHigher(int minorVersion) {
-		if (minor > minorVersion)
+	/**
+	 * @param serverVersion version as reported by the server, ex. "26.2" or "26.2.1"
+	 * @return true if it is at least {@value #MIN_SUPPORTED_MAJOR}.{@value #MIN_SUPPORTED_MINOR}.
+	 *         Legacy "1.x" versions are older than that. If the version can not be parsed, the
+	 *         server is assumed to be supported.
+	 */
+	private static boolean isSupportedVersion(String serverVersion) {
+		Matcher matcher = VERSION_PATTERN.matcher(serverVersion);
+		if (!matcher.find())
 			return true;
-		else
-			return false;
+		int major = Integer.parseInt(matcher.group(1));
+		int minor = Integer.parseInt(matcher.group(2));
+		return major > MIN_SUPPORTED_MAJOR || (major == MIN_SUPPORTED_MAJOR && minor >= MIN_SUPPORTED_MINOR);
 	}
 }

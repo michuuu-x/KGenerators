@@ -1,5 +1,6 @@
 package me.kryniowesegryderiusz.kgenerators.gui.objects;
 
+import me.kryniowesegryderiusz.kgenerators.utils.ChatUtils;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -26,7 +27,7 @@ public class MenuInventory {
 	
 	public MenuInventory(String name, int slots)
 	{
-		this.name = Main.getMultiVersion().getChatUtils().colorize(name);;
+		this.name = name;
 		this.slots = (short) slots;
 	}
 	
@@ -49,7 +50,7 @@ public class MenuInventory {
 			newName = newName.replace(rep.get(i), rep.get(i+1));
 		}
 		
-		Inventory menu = Bukkit.createInventory(player, this.slots, newName);
+		Inventory menu = Bukkit.createInventory(player, this.slots, ChatUtils.parse(newName));
 		
 		for(Enum<?> en : Lang.getMenuItemStorage().getAllEnums())
 		{
@@ -91,7 +92,7 @@ public class MenuInventory {
 	{
 		if (config.contains(path))
 		{
-			if (config.contains(path+".name")) this.name = Main.getMultiVersion().getChatUtils().colorize(config.getString(path+".name"));
+			if (config.contains(path+".name")) this.name = config.getString(path+".name");
 			if (config.contains(path+".slots")) this.slots = (short) config.getInt(path+".slots");
 		}
 		else

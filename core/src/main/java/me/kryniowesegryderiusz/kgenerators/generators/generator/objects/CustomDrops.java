@@ -7,7 +7,7 @@ import java.util.concurrent.ThreadLocalRandom;
 import javax.annotation.Nullable;
 
 import org.bukkit.Location;
-import org.bukkit.Material;
+import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Player;
 import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.inventory.ItemStack;
@@ -18,7 +18,6 @@ import me.kryniowesegryderiusz.kgenerators.dependencies.enums.Dependency;
 import me.kryniowesegryderiusz.kgenerators.dependencies.hooks.VaultHook;
 import me.kryniowesegryderiusz.kgenerators.utils.FilesUtils;
 import me.kryniowesegryderiusz.kgenerators.utils.PlayerUtils;
-import com.cryptomorin.xseries.XEnchantment;
 
 public class CustomDrops {
 
@@ -76,7 +75,7 @@ public class CustomDrops {
 			if (p != null && this.itemFortune) {
 				int level = 0;
 				if (p.getInventory().getItemInMainHand() != null)
-					level = p.getInventory().getItemInMainHand().getEnchantmentLevel(XEnchantment.FORTUNE.get());
+					level = p.getInventory().getItemInMainHand().getEnchantmentLevel(Enchantment.FORTUNE);
 				if (level > 0) {
 					int randomNum = ThreadLocalRandom.current().nextInt(1, level + 2);
 					is.setAmount(randomNum);
@@ -121,17 +120,8 @@ public class CustomDrops {
 			e.setExpToDrop(0);
 		}
 
-		/*
-		 * Version dependent
-		 */
-
-		if (this.removeDefaults) {
-			if (Main.getMultiVersion().isHigher(11)) e.setDropItems(false);
-			else {
-				Main.getMultiVersion().getBlocksUtils().setBlock(e.getBlock().getLocation(), Material.AIR);
-				e.setCancelled(true);
-			}
-		}
+		if (this.removeDefaults)
+			e.setDropItems(false);
 
 		/*
 		 * Other

@@ -2,22 +2,16 @@ package me.kryniowesegryderiusz.kgenerators.utils;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.NoSuchElementException;
-import java.util.Optional;
 
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
 import me.kryniowesegryderiusz.kgenerators.Main;
-import me.kryniowesegryderiusz.kgenerators.dependencies.hooks.EcoItemsHook;
 import me.kryniowesegryderiusz.kgenerators.dependencies.hooks.ItemsAdderHook;
-import me.kryniowesegryderiusz.kgenerators.dependencies.hooks.MMOItemsHook;
 import me.kryniowesegryderiusz.kgenerators.dependencies.hooks.MythicMobsHook;
 import me.kryniowesegryderiusz.kgenerators.dependencies.hooks.NexoHook;
-import me.kryniowesegryderiusz.kgenerators.dependencies.hooks.OraxenHook;
 import me.kryniowesegryderiusz.kgenerators.logger.Logger;
-import com.cryptomorin.xseries.XMaterial;
 
 public abstract class ItemUtils {
 	
@@ -34,39 +28,28 @@ public abstract class ItemUtils {
         	else if (splitted[0].equals("itemsadder")
         			&& ItemsAdderHook.getItemStack(splitted[1]) != null)
         		return ItemsAdderHook.getItemStack(splitted[1]);
-        	else if (splitted[0].equals("ecoitems")
-        			&& EcoItemsHook.getItemStack(splitted[1]) != null)
-        		return EcoItemsHook.getItemStack(splitted[1]);
-        	else if (splitted[0].equals("oraxen")
-        			&& OraxenHook.getItemStack(splitted[1]) != null)
-        		return OraxenHook.getItemStack(splitted[1]);
         	else if (splitted[0].equals("nexo")
         			&& NexoHook.exists(splitted[1]))
         		return NexoHook.getItemStack(splitted[1]);
-        	else if (splitted[0].equals("mmoitems")
-        			&& MMOItemsHook.getItemStack(splitted[1]) != null)
-        		return MMOItemsHook.getItemStack(splitted[1]);
         	else if (splitted[0].equals("mythicmobs")
         			&& MythicMobsHook.getItemStack(splitted[1]) != null)
         		return MythicMobsHook.getItemStack(splitted[1]);
         	
     	}
-		return getXMaterial(material, place, isBlockCheck).parseItem();
+		return new ItemStack(getMaterial(material, place, isBlockCheck));
     }
-    
-	public static XMaterial getXMaterial(String material, String place, boolean isBlockCheck) {
-		Optional<XMaterial> oxm = XMaterial.matchXMaterial(material);
-		try {
-			XMaterial xm = oxm.get();
-			if (isBlockCheck && !xm.get().isBlock()) {
-				Logger.error(place + ": " + material + " is not a block! Using STONE!");
-				return XMaterial.STONE;
-			}
-			return xm;
-		} catch (NoSuchElementException e) {
+
+	public static Material getMaterial(String material, String place, boolean isBlockCheck) {
+		Material m = Material.matchMaterial(material);
+		if (m == null) {
 			Logger.error(place + ": " + material + " is not a proper material or generator id! Using STONE!");
+			return Material.STONE;
 		}
-		return XMaterial.STONE;
+		if (isBlockCheck && !m.isBlock()) {
+			Logger.error(place + ": " + material + " is not a block! Using STONE!");
+			return Material.STONE;
+		}
+		return m;
 	}
 	
 	/**
@@ -104,7 +87,7 @@ public abstract class ItemUtils {
 		ArrayList<String> reps = new ArrayList<>(Arrays.asList(replacables));
 		ArrayList<String> newLore = new ArrayList<String>();
 		
-		for (String s : item.getItemMeta().getLore()) {
+		for (String s : ChatUtils.getLore(item)) {
 			String message = s;
 			for (int i = 0; i < reps.size(); i = i + 2) {
 				message = message.replace(reps.get(i), reps.get(i + 1));
@@ -113,32 +96,31 @@ public abstract class ItemUtils {
 		}
 		
 		ItemMeta meta = item.getItemMeta();
-		meta.setLore(newLore);
+		ChatUtils.setLore(meta, newLore);
 		item.setItemMeta(meta);
 		
 		return item;
 	}
 	
+	/**
+	 * Creates ItemStack of material. Block-only materials (crops, stems) are mapped to their item form
+	 */
 	public static ItemStack getItemStackFromMaterial(Material m) {
-		return getItemStackFromMaterial(XMaterial.matchXMaterial(m));
-	}
 
-	public static ItemStack getItemStackFromMaterial(XMaterial xm) {
-		
-		if (xm == null) 
-			return XMaterial.AIR.parseItem();
-		else if (xm == XMaterial.CARROTS)
-			return XMaterial.CARROT.parseItem();
-		else if (xm == XMaterial.POTATOES)
-			return XMaterial.POTATO.parseItem();
-		else if (xm == XMaterial.BEETROOTS)
-			return XMaterial.BEETROOT.parseItem();
-		else if (xm == XMaterial.PUMPKIN_STEM)
-			return XMaterial.PUMPKIN_SEEDS.parseItem();
-		else if (xm == XMaterial.MELON_STEM)
-			return XMaterial.MELON_SEEDS.parseItem();
+		if (m == null)
+			return new ItemStack(Material.AIR);
+		else if (m == Material.CARROTS)
+			return new ItemStack(Material.CARROT);
+		else if (m == Material.POTATOES)
+			return new ItemStack(Material.POTATO);
+		else if (m == Material.BEETROOTS)
+			return new ItemStack(Material.BEETROOT);
+		else if (m == Material.PUMPKIN_STEM)
+			return new ItemStack(Material.PUMPKIN_SEEDS);
+		else if (m == Material.MELON_STEM)
+			return new ItemStack(Material.MELON_SEEDS);
 		else
-			return xm.parseItem();
+			return new ItemStack(m);
 
 	}
 }

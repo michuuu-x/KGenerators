@@ -14,6 +14,7 @@ import com.bgsoftware.superiorskyblock.api.events.IslandDisbandEvent;
 import com.bgsoftware.superiorskyblock.api.events.PluginInitializeEvent;
 import com.bgsoftware.superiorskyblock.api.island.Island;
 import com.bgsoftware.superiorskyblock.api.island.IslandPrivilege;
+import com.bgsoftware.superiorskyblock.api.world.Dimension;
 
 import me.kryniowesegryderiusz.kgenerators.Main;
 import me.kryniowesegryderiusz.kgenerators.dependencies.enums.Dependency;
@@ -75,13 +76,13 @@ public class SuperiorSkyblock2Hook implements Listener {
 
 		if (e.getIsland().isNetherEnabled()) {
 			Main.getPlacedGenerators().bulkRemoveGenerators(
-					SuperiorSkyblockAPI.getIslandsWorld(e.getIsland(), Environment.NETHER), min.getBlockX(), 0,
+					SuperiorSkyblockAPI.getIslandsWorld(e.getIsland(), Dimension.getByName(Environment.NETHER.name())), min.getBlockX(), 0,
 					min.getBlockZ(), max.getBlockX(), min.getWorld().getMaxHeight(), max.getBlockZ(), false);
 		}
 
 		if (e.getIsland().isEndEnabled()) {
 			Main.getPlacedGenerators().bulkRemoveGenerators(
-					SuperiorSkyblockAPI.getIslandsWorld(e.getIsland(), Environment.THE_END), min.getBlockX(), 0,
+					SuperiorSkyblockAPI.getIslandsWorld(e.getIsland(), Dimension.getByName(Environment.THE_END.name())), min.getBlockX(), 0,
 					min.getBlockZ(), max.getBlockX(), min.getWorld().getMaxHeight(), max.getBlockZ(), false);
 		}
 

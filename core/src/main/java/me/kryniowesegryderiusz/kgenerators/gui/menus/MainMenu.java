@@ -60,7 +60,7 @@ public class MainMenu {
 			if (generatorMenuItem.getItemType().contains("<generator>"))
 				generatorMenuItem.setItemStack(generator.getGeneratorItem());
 
-			generatorMenuItem.replace("<generator_name>", generator.getGeneratorItem().getItemMeta().getDisplayName());
+			generatorMenuItem.replace("<generator_name>", generator.getGeneratorItemName());
 
 			if (Main.getRecipes().get(generator) != null) {
 				generatorMenuItem.addLore(Lang.getMenuItemAdditionalLinesStorage().get(MenuItemAdditionalLines.RECIPE));

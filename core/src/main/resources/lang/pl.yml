@@ -3,95 +3,95 @@
 # https://github.com/Kryniowesegryderiusz/KGenerators/blob/main/core/src/main/resources/lang/pl.yml
 
 messages:
-  prefix: '&8[&6KGenerators&8] '
+  prefix: '<dark_gray>[<gold>KGenerators<dark_gray>] '
   generators:
     any:
-      owner-none: '&cNikt'
-      disabled: '&cGeneratory są wyłączone na tym świecie!'
-      repaired: '&aGenerator naprawiony!'
-      no-longer-there: '&cW tym miejscu nie istnieje już generator!'
-      disabled-specific: '&c<generator> jest niedostępny na tym świecie!'
+      owner-none: '<red>Nikt'
+      disabled: '<red>Generatory są wyłączone na tym świecie!'
+      repaired: '<green>Generator naprawiony!'
+      no-longer-there: '<red>W tym miejscu nie istnieje już generator!'
+      disabled-specific: '<red><generator> jest niedostępny na tym świecie!'
       object-amount: <amount> x <object>
     digging:
-      cant-here: '&cNie możesz tutaj kopać bloków z generatora!'
-      only-gen: '&cW tym miejscu możesz kopać tylko wygenerowane bloki!'
-      no-permission: '&cNie masz uprawnienia &8(&7<permission>&8)&c, żeby kopać <generator>&c!'
+      cant-here: '<red>Nie możesz tutaj kopać bloków z generatora!'
+      only-gen: '<red>W tym miejscu możesz kopać tylko wygenerowane bloki!'
+      no-permission: '<red>Nie masz uprawnienia <dark_gray>(<gray><permission><dark_gray>)<red>, żeby kopać <generator><red>!'
     crafting:
-      cant-use: '&cNie możesz nic wytworzyć z generatora!'
-      no-permission: '&cNie masz uprawnienia &8(&7<permission>&8)&c, żeby wytworzyć
-        <generator>&c!'
+      cant-use: '<red>Nie możesz nic wytworzyć z generatora!'
+      no-permission: '<red>Nie masz uprawnienia <dark_gray>(<gray><permission><dark_gray>)<red>, żeby wytworzyć
+        <generator><red>!'
     timeleft:
-      output: '&aRegeneracja nastąpi za &e<time>'
+      output: '<green>Regeneracja nastąpi za <yellow><time>'
     pick-up:
-      successful: '&aPodniesiono &e<generator>'
-      cant-here: '&cNie możesz tutaj podnieść generatora!'
-      no-permission: '&cNie masz uprawnień &8(&7<permission>&8)&c, żeby podnieść generator
+      successful: '<green>Podniesiono <yellow><generator>'
+      cant-here: '<red>Nie możesz tutaj podnieść generatora!'
+      no-permission: '<red>Nie masz uprawnień <dark_gray>(<gray><permission><dark_gray>)<red>, żeby podnieść generator
         tego typu'
     place:
-      cant-here: '&cNie możesz tutaj postawić generatora!'
-      cant-place-block: '&cNie możesz nic postawić w miejscu generatora'
-      cant-place-double-below-block: '&cNie możesz postawić podwójnego generatora
+      cant-here: '<red>Nie możesz tutaj postawić generatora!'
+      cant-place-block: '<red>Nie możesz nic postawić w miejscu generatora'
+      cant-place-double-below-block: '<red>Nie możesz postawić podwójnego generatora
         pod innym blokiem!'
-      cant-place-double-below-generator: '&cNie możesz postawić podwójnego generatora
+      cant-place-double-below-generator: '<red>Nie możesz postawić podwójnego generatora
         pod innym generatorem!'
-      no-permission: '&cNie masz uprawnień &8(&7<permission>&8)&c, żeby postawić generator
+      no-permission: '<red>Nie masz uprawnień <dark_gray>(<gray><permission><dark_gray>)<red>, żeby postawić generator
         tego typu'
     limits:
-      cant-place-more-type: '&cNie możesz postawić więcej niż &6<number> generatorów
-        <generator>&c, ze względu na limit &6<limit>&c!'
-      cant-pick-up: '&cNie możesz podnieść generatora należącego do &6<owner>&c!'
-      cant-use: '&cNie możesz używać generatora należącego do &6<owner>&c!'
+      cant-place-more-type: '<red>Nie możesz postawić więcej niż <gold><number> generatorów
+        <generator><red>, ze względu na limit <gold><limit><red>!'
+      cant-pick-up: '<red>Nie możesz podnieść generatora należącego do <gold><owner><red>!'
+      cant-use: '<red>Nie możesz używać generatora należącego do <gold><owner><red>!'
     protection:
-      cant-change-generator-item: '&cNie możesz edytować generatora!'
+      cant-change-generator-item: '<red>Nie możesz edytować generatora!'
     menus:
-      cant-open-here: '&cNie możesz tutaj używać tego menu!!'
+      cant-open-here: '<red>Nie możesz tutaj używać tego menu!!'
     action:
-      cant-here: '&cNie możesz tego tutaj zrobić!'
+      cant-here: '<red>Nie możesz tego tutaj zrobić!'
     chunks:
-      not-loaded-yet: '&cChunk nie został w pełni załadowany! Zaczekaj chwilę!'
+      not-loaded-yet: '<red>Chunk nie został w pełni załadowany! Zaczekaj chwilę!'
   economy:
-    no-economy-avaible: '&cEkonomia nie jest dostępna na serwerze!'
-    not-enough-money: '&cNie masz wystarczająco dużo pieniędzy! Potrzebujesz &6<cost>&c!'
-    done: '&aUlepszono &e<number> &ageneratorów za &e<cost>&a!'
+    no-economy-avaible: '<red>Ekonomia nie jest dostępna na serwerze!'
+    not-enough-money: '<red>Nie masz wystarczająco dużo pieniędzy! Potrzebujesz <gold><cost><red>!'
+    done: '<green>Ulepszono <yellow><number> <green>generatorów za <yellow><cost><green>!'
   commands:
     any:
-      wrong: '&cNie ma takiej komendy! Wpisz /kgenerators, by wyświetlić pomoc'
-      no-permission: '&cNie masz uprawnienia &8(&7<permission>&8)&c, żeby używać komend
+      wrong: '<red>Nie ma takiej komendy! Wpisz /kgenerators, by wyświetlić pomoc'
+      no-permission: '<red>Nie masz uprawnienia <dark_gray>(<gray><permission><dark_gray>)<red>, żeby używać komend
         generatorów'
-      player-not-online: '&cGracz nie jest online!'
-      player-doesnt-exist: '&cGracz nie istnieje!'
-      generator-doesnt-exist: '&cTen generator nie istnieje!'
-      menu-doesnt-exist: '&cTo menu nie istnieje!'
-      console-only: '&cTej komendy można użyć wyłącznie z konsoli!'
-      not-a-integer: '&c''<variable>'' powinno być liczbą!'
-      not-a-floating-point-number: '&c''<variable>'' powinno być liczbą zmiennoprzecinkową!'
-      world-doesnt-exist: '&cŚwiat ''<world>'' nie istnieje'
+      player-not-online: '<red>Gracz nie jest online!'
+      player-doesnt-exist: '<red>Gracz nie istnieje!'
+      generator-doesnt-exist: '<red>Ten generator nie istnieje!'
+      menu-doesnt-exist: '<red>To menu nie istnieje!'
+      console-only: '<red>Tej komendy można użyć wyłącznie z konsoli!'
+      not-a-integer: '<red>''<variable>'' powinno być liczbą!'
+      not-a-floating-point-number: '<red>''<variable>'' powinno być liczbą zmiennoprzecinkową!'
+      world-doesnt-exist: '<red>Świat ''<world>'' nie istnieje'
     list:
-      header: '&aGeneratory:'
-      list: '&8- <generator> &8(&7ID: <generatorID>&8)'
-      no-permission: '&cNie masz uprawnienia &8(&7<permission>&8)&c, żeby wyświetlić
+      header: '<green>Generatory:'
+      list: '<dark_gray>- <generator> <dark_gray>(<gray>ID: <generatorID><dark_gray>)'
+      no-permission: '<red>Nie masz uprawnienia <dark_gray>(<gray><permission><dark_gray>)<red>, żeby wyświetlić
         listę generatorów'
       help: Wyświetla listę generatorów
     give:
-      generator-given: '&aDałeś <amount>x <generator>&a graczowi &e<player>'
-      generator-recieved: '&aOtrzymano <amount>x <generator>&a!'
-      usage: '&cUżycie &e/kgenerators give <gracz> <generator> [ilość]'
-      no-permission: '&cNie masz uprawnienia &8(&7<permission>&8)&c, żeby dawać generatory'
+      generator-given: '<green>Dałeś <amount>x <generator><green> graczowi <yellow><player>'
+      generator-recieved: '<green>Otrzymano <amount>x <generator><green>!'
+      usage: '<red>Użycie <yellow>/kgenerators give <gracz> <generator> [ilość]'
+      no-permission: '<red>Nie masz uprawnienia <dark_gray>(<gray><permission><dark_gray>)<red>, żeby dawać generatory'
       help: Przyznaje generator graczowi
     getall:
-      recieved: '&aOtrzymano generatory'
-      no-permission: '&cNie masz uprawnienia &8(&7<permission>&8)&c, żeby wziąć generatory'
+      recieved: '<green>Otrzymano generatory'
+      no-permission: '<red>Nie masz uprawnienia <dark_gray>(<gray><permission><dark_gray>)<red>, żeby wziąć generatory'
       help: Bierze wszystkie generatory
     limits:
-      no-permission: '&cNie masz uprawnień &8(&7<permission>&8)&c, żeby otworzyć menu
+      no-permission: '<red>Nie masz uprawnień <dark_gray>(<gray><permission><dark_gray>)<red>, żeby otworzyć menu
         limitów!'
       help: Sprawdza limity
     actions:
-      no-permission: '&cNie masz uprawnienia &8(&7<permission>&8)&c, żeby sprawdzić
+      no-permission: '<red>Nie masz uprawnienia <dark_gray>(<gray><permission><dark_gray>)<red>, żeby sprawdzić
         akcje!'
       help: Sprawdza dostępne akcje
-      header: '&aDostępne akcje:'
-      list: '&6<action> &8- &e<sneak><mode><item>'
+      header: '<green>Dostępne akcje:'
+      list: '<gold><action> <dark_gray>- <yellow><sneak><mode><item>'
       sneak: 'kucnij i '
       break: zniszcz blok
       left-click: kliknij lewym
@@ -102,8 +102,8 @@ messages:
       time-left: Pozostały czas
       upgrade: Ulepsz
     timeleft:
-      no-generator: '&cNie patrzysz na generator oczekujący na regeneracje!'
-      no-permission: '&cNie masz uprawnienia &8(&7<permission>&8)&c, żeby sprawdzić
+      no-generator: '<red>Nie patrzysz na generator oczekujący na regeneracje!'
+      no-permission: '<red>Nie masz uprawnienia <dark_gray>(<gray><permission><dark_gray>)<red>, żeby sprawdzić
         pozostały czas generatora'
       help: Sprawdza pozostały czas generatora
       format:
@@ -113,62 +113,62 @@ messages:
         days: dni
         none: Brak
     menu:
-      opened-others: '&aOtwarto menu generatora &e<generator> <menu> &agraczowi &e<player>'
-      error: '&cPodczas używania menu wystąpił błąd! Skontaktuj się z administratorem'
-      no-permission: '&cNie masz uprawnienia &8(&7<permission>&8)&c, żeby otworzyć
+      opened-others: '<green>Otwarto menu generatora <yellow><generator> <menu> <green>graczowi <yellow><player>'
+      error: '<red>Podczas używania menu wystąpił błąd! Skontaktuj się z administratorem'
+      no-permission: '<red>Nie masz uprawnienia <dark_gray>(<gray><permission><dark_gray>)<red>, żeby otworzyć
         menu!'
-      no-permission-others: '&cNie masz uprawnienień &8(&7<permission>&8)&c, żeby
+      no-permission-others: '<red>Nie masz uprawnienień <dark_gray>(<gray><permission><dark_gray>)<red>, żeby
         otwierać menu generatora innym graczom!'
       help: Otwiera menu generatorów
     reload:
-      done: '&aPrzeładowano plugin! Sprawdź konsolę lub plik log.txt w folderze pluginu,
+      done: '<green>Przeładowano plugin! Sprawdź konsolę lub plik log.txt w folderze pluginu,
         żeby sprawdzić ewentualne błedy!'
-      no-permission: '&cNie masz uprawnienia &8(&7<permission>&8)&c, żeby przeładować
+      no-permission: '<red>Nie masz uprawnienia <dark_gray>(<gray><permission><dark_gray>)<red>, żeby przeładować
         plugin'
       help: Przeładowuje plugin
     debug:
-      done: '&aTwój url pomocy to: &e<url>'
-      error: '&cWystąpił błąd podczas generowania url pomocy!'
-      no-permission: '&cNie masz uprawnienia &8(&7<permission>&8)&c, żeby pobierać
+      done: '<green>Plik debug zapisany: <yellow><file>'
+      error: '<red>Wystąpił błąd podczas generowania url pomocy!'
+      no-permission: '<red>Nie masz uprawnienia <dark_gray>(<gray><permission><dark_gray>)<red>, żeby pobierać
         url pomocy'
     help:
-      label: '&6&lKGenerators &aPomoc:'
-      format: '&e/kgenerators <subcommand> &7<help>'
+      label: '<gold><bold>KGenerators <reset><green>Pomoc:'
+      format: '<yellow>/kgenerators <subcommand> <gray><help>'
     spawn:
-      done: '&aGenerator spawned! New generator: &e<location_info>'
-      usage: '&cUsage: &e/kgenerators spawn <world> <x> <y> <z> <generator> [owner]'
-      no-permission: '&cYou dont have permission &8(&7<permission>&8)&c to spawn generator!'
+      done: '<green>Generator spawned! New generator: <yellow><location_info>'
+      usage: '<red>Usage: <yellow>/kgenerators spawn <world> <x> <y> <z> <generator> [owner]'
+      no-permission: '<red>You dont have permission <dark_gray>(<gray><permission><dark_gray>)<red> to spawn generator!'
       help: Spawns generator at location
     remove:
-      done: '&aRemoved <amount> generators!'
+      done: '<green>Removed <amount> generators!'
       usage:
-        worldedit: '&cUsage: &e/kgenerators remove worldedit'
-        owner: '&cUsage: &e/kgenerators remove owner <owner>'
-      no-permission: '&cYou dont have permission &8(&7<permission>&8)&c to remove
+        worldedit: '<red>Usage: <yellow>/kgenerators remove worldedit'
+        owner: '<red>Usage: <yellow>/kgenerators remove owner <owner>'
+      no-permission: '<red>You dont have permission <dark_gray>(<gray><permission><dark_gray>)<red> to remove
         generators!'
       help: Removes generators
-      worldedit-not-found: '&cSelection is not complete!'
-      worldedit-wrong-selection: '&cSelection is not complete!'
+      worldedit-not-found: '<red>Selection is not complete!'
+      worldedit-wrong-selection: '<red>Selection is not complete!'
     upgrade:
       help: Ulepsz generator
   upgrades:
-    upgraded: '&aUlepszono &e<number> &ageneratorów za &e<costs>&a!'
-    gui-upgraded: '&cNie posiadasz &4<cost>&c!'
+    upgraded: '<green>Ulepszono <yellow><number> <green>generatorów za <yellow><costs><green>!'
+    gui-upgraded: '<red>Nie posiadasz <dark_red><cost><red>!'
     separator: ', '
-    no-next-level: '&cTen generator osiągnął już maksymalny poziom!'
-    no-permission: '&cNie masz uprawnienia &8(&7<permission>&8)&c, żeby ulepszyć generator'
-    no-a-generator: '&cNie masz generatora w ręce!'
+    no-next-level: '<red>Ten generator osiągnął już maksymalny poziom!'
+    no-permission: '<red>Nie masz uprawnienia <dark_gray>(<gray><permission><dark_gray>)<red>, żeby ulepszyć generator'
+    no-a-generator: '<red>Nie masz generatora w ręce!'
     costs:
       exp: xp
       exp-levels: poziomów exp
-    not-a-generator: '&cYou dont have generator in hand!'
+    not-a-generator: '<red>You dont have generator in hand!'
   hooks:
     explode-pickaxe:
-      cannot-use-on-double: '&cNie możesz używać wybuchowego kilofa na podwójnym generatorze!'
+      cannot-use-on-double: '<red>Nie możesz używać wybuchowego kilofa na podwójnym generatorze!'
   database:
-    error: '&cWystąpił problem z bazą danych! Skontaktuj się z administratorem!'
+    error: '<red>Wystąpił problem z bazą danych! Skontaktuj się z administratorem!'
 holograms:
   remaining-time:
   - <generator_name>
-  - '&6Czas:'
-  - '&e<time>'
+  - '<gold>Czas:'
+  - '<yellow><time>'

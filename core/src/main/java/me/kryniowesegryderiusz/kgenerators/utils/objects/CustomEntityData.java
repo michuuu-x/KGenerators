@@ -1,5 +1,6 @@
 package me.kryniowesegryderiusz.kgenerators.utils.objects;
 
+import me.kryniowesegryderiusz.kgenerators.utils.ChatUtils;
 import java.util.ArrayList;
 import java.util.Map;
 
@@ -49,7 +50,7 @@ public class CustomEntityData {
 			} else {
 				Entity e = location.getWorld().spawnEntity(location, entityType);
 				if (name != null)
-					e.setCustomName(Main.getMultiVersion().getChatUtils().colorize(name));
+					e.customName(ChatUtils.parse(name));
 				spawnedEntities.add(e);
 			}
 		}

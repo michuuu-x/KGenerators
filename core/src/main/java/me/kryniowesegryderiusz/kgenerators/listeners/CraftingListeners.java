@@ -54,7 +54,7 @@ public class CraftingListeners implements Listener {
 				String permission = "kgenerators.craft." + resultGenerator.getId();
 				if (!p.hasPermission(permission)) {
 					Lang.getMessageStorage().send(p, Message.GENERATORS_CRAFTING_NO_PERMISSION, "<generator>",
-							resultGenerator.getGeneratorItem().getItemMeta().getDisplayName(), "<permission>", permission);
+							resultGenerator.getGeneratorItemName(), "<permission>", permission);
 					e.setResult(Result.DENY);
 					closeInv(p);
 					return;

@@ -1,5 +1,6 @@
 package me.kryniowesegryderiusz.kgenerators.generators.recipes.objects;
 
+import me.kryniowesegryderiusz.kgenerators.utils.ChatUtils;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -128,7 +129,7 @@ public class Recipe {
 			ArrayList<String> line = new ArrayList<String>();
 			for (char c : s.toCharArray()) {
 				if (this.ingredients.get(c).hasItemMeta() && this.ingredients.get(c).getItemMeta().hasDisplayName())
-					line.add(this.ingredients.get(c).getItemMeta().getDisplayName());
+					line.add(ChatUtils.getDisplayName(this.ingredients.get(c)));
 				else
 					line.add(this.ingredients.get(c).getType().name());
 			}

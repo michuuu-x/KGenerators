@@ -15,12 +15,12 @@ example_generator:
   #Generator item
   #More options for item settings can be found here https://kzone.gitbook.io/docs/kgenerators/configuration-files/configuring-itemstack
   generator-item:
-    material: GRASS
-    name: '&aExample #4fff47generator' #Hex colors are available only for 1.16+
+    material: SHORT_GRASS
+    name: '<green>Example <#4fff47>generator' #Texts use MiniMessage format: https://docs.advntr.dev/minimessage/format.html
     lore:
-    - '&6This is example generator!'
+    - '<gold>This is example generator!'
     enchants:
-    - "DURABILITY:1"
+    - "UNBREAKING:1"
     item-flags:
     - HIDE_ENCHANTS
   #Delay between generations (in ticks: 20 = 1s)) You can set -1 or 0 to regen immediately
@@ -76,7 +76,7 @@ example_generator:
         amount: 5
         name: "Magic stone"
         lore:
-        - "&cThats Magic Stone"
+        - "<red>Thats Magic Stone"
         enchants:
           - FORTUNE:1
       #If this option is set to true generator wont regenerate, until item is picked up/despawns/etc.
@@ -112,7 +112,6 @@ example_generator:
   #Should pistons be able to move generated block and generate new one?
   allow-piston-push: true
   #Should hologram be displayed above generator?
-  #Requires holograms provider installed
   hologram: false
   #
   # ***    Settings that override config.yml options below.    ***
@@ -148,14 +147,14 @@ example_generator:
 stone_generator_level_1:
   generator-item:
     material: END_STONE
-    name: '&aStone generator I'
+    name: '<green>Stone generator I'
     lore:
-    - '&6This is stone generator!'
-    - '&6It generates stone!'
-    - '&eUse /kgenerators upgrade'
-    - '&eto upgrade it!'
+    - '<gold>This is stone generator!'
+    - '<gold>It generates stone!'
+    - '<yellow>Use /kgenerators upgrade'
+    - '<yellow>to upgrade it!'
     enchants:
-    - "DURABILITY:1"
+    - "UNBREAKING:1"
     item-flags:
     - HIDE_ENCHANTS
   delay: 40
@@ -166,7 +165,7 @@ stone_generator_level_1:
       material: STONE
   # *** Optional generators settings below ***
   generate-immediately-after-place: true
-  placeholder: RED_SANDSTONE
+  placeholder: AIR
   allow-piston-push: true
     
 #This predefined generator could be obtained by typing /kgenerators upgrade on stone_generator_level_1
@@ -174,12 +173,12 @@ stone_generator_level_1:
 stone_generator_level_2:
   generator-item:
     material: END_STONE
-    name: '&aStone generator II'
+    name: '<green>Stone generator II'
     lore:
-    - '&6This is level II stone generator!'
-    - '&6It generates stone quicker!'
+    - '<gold>This is level II stone generator!'
+    - '<gold>It generates stone quicker!'
     enchants:
-    - "DURABILITY:1"
+    - "UNBREAKING:1"
     item-flags:
     - HIDE_ENCHANTS
   delay: 20
@@ -190,34 +189,26 @@ stone_generator_level_2:
       material: STONE
   # *** Optional generators settings below ***
   generate-immediately-after-place: true
-  placeholder: RED_SANDSTONE
+  placeholder: AIR
   allow-piston-push: true
  
 #This predefined generator can generate crops
 crops_generator:
   generator-item:
     material: FARMLAND
-    name: '&aCrops generator'
+    name: '<green>Crops generator'
     lore:
-    - '&6This is grown crops generator!'
+    - '<gold>This is grown crops generator!'
     enchants:
-    - "DURABILITY:1"
+    - "UNBREAKING:1"
     item-flags:
     - HIDE_ENCHANTS
   delay: 20
   type: double
   generates:
     - type: block
-      chance: 50.0
+      chance: 100.0
       material: WHEAT
-      age: 7
-    - type: block
-      chance: 50.0
-      material: POTATOES
-      age: 7
-    - type: block
-      chance: 50.0
-      material: CARROTS
       age: 7
 
 #This predefined generator has only required settings and GENERATES ITEMS! 
@@ -225,20 +216,20 @@ crops_generator:
 wood_generator:
   generator-item:
     material: OAK_LOG
-    name: '&aWoods generator'
+    name: '<green>Woods generator'
     lore:
-    - '&6This is woods generator!'
-    - '&6Place it to generate wood'
+    - '<gold>This is woods generator!'
+    - '<gold>Place it to generate wood'
     - ''
-    - '&cThis is SINGLE ITEM generator,'
-    - '&cso right click on block below it'
-    - '&cto open generator menu!'
+    - '<red>This is SINGLE ITEM generator,'
+    - '<red>so right click on block below it'
+    - '<red>to open generator menu!'
     enchants:
-    - "DURABILITY:1"
+    - "UNBREAKING:1"
     item-flags:
     - HIDE_ENCHANTS
   delay: 20
-  type: single
+  type: double
   generates:
     - type: item
       chance: 25.0
@@ -257,12 +248,12 @@ wood_generator:
 ores_from_stone_generator:
   generator-item:
     material: STONE
-    name: '&aOres from stone generator'
+    name: '<green>Ores from stone generator'
     lore:
-    - '&6This is ores from stone generator!'
-    - '&6It generates ores by mining stone!'
+    - '<gold>This is ores from stone generator!'
+    - '<gold>It generates ores by mining stone!'
     enchants:
-    - "DURABILITY:1"
+    - "UNBREAKING:1"
     item-flags:
     - HIDE_ENCHANTS
   delay: 80
@@ -320,12 +311,12 @@ ores_from_stone_generator:
 ores_generator:
   generator-item:
     material: REDSTONE_ORE
-    name: '&aOres generator'
+    name: '<green>Ores generator'
     lore:
-    - '&6This is ores generator!'
-    - '&6Place it to generate ores'
+    - '<gold>This is ores generator!'
+    - '<gold>Place it to generate ores'
     enchants:
-    - "DURABILITY:1"
+    - "UNBREAKING:1"
     item-flags:
     - HIDE_ENCHANTS
   delay: 80

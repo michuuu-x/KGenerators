@@ -1,83 +1,83 @@
 #Translated to Romanian by iGabrielG
 messages:
-  prefix: '&8[&6KGenerators&8] '
+  prefix: '<dark_gray>[<gold>KGenerators<dark_gray>] '
   generators:
     digging:
-      only-gen: '&cPoți sparge doar blocuri generate !'
-      no-permission: '&cNu aveți permisiunea &8(&7<permission>&8)&c de a mina !
-        <generator>&c!'
+      only-gen: '<red>Poți sparge doar blocuri generate !'
+      no-permission: '<red>Nu aveți permisiunea <dark_gray>(<gray><permission><dark_gray>)<red> de a mina !
+        <generator><red>!'
     crafting:
-      cant-use: '&cNu poți crafta nimic din generator !'
-      no-permission: '&cNu aveți permisiunea &8(&7<permission>&8)&c de a crafta
-        <generator>&c!'
+      cant-use: '<red>Nu poți crafta nimic din generator !'
+      no-permission: '<red>Nu aveți permisiunea <dark_gray>(<gray><permission><dark_gray>)<red> de a crafta
+        <generator><red>!'
     timeleft:
-      output: '&aAcest generator se va regenera în &e<time>'
+      output: '<green>Acest generator se va regenera în <yellow><time>'
     pick-up:
-      successful: '&e<generator> &aprimit'
-      cant-here: '&cNu aveți permisiunea de a lua generatorul aici !'
+      successful: '<yellow><generator> <green>primit'
+      cant-here: '<red>Nu aveți permisiunea de a lua generatorul aici !'
     place:
-      cant-here: '&cNu aveți permisiunea de a pune generatorul aici !'
-      cant-place-block: '&cNu aveți permisiunea de a pune blocuri în locul 
+      cant-here: '<red>Nu aveți permisiunea de a pune generatorul aici !'
+      cant-place-block: '<red>Nu aveți permisiunea de a pune blocuri în locul 
       generatorului !'
-      cant-place-double-below-block: '&cNu aveți permisiunea de a pune generatorul 
+      cant-place-double-below-block: '<red>Nu aveți permisiunea de a pune generatorul 
       sub un block !'
-      cant-place-double-below-generator: '&cNu aveți permisiunea de a suprapune 
+      cant-place-double-below-generator: '<red>Nu aveți permisiunea de a suprapune 
       generatoarele !'
     per-player-generator:
-      owner-none: '&cNimic'
-      cant-place-more: '&cNu aveți permisiunea de a pune mai mult de &6<number> &cgeneratoare !'
-      cant-place-more-type: 'cNu aveți permisiunea de a pune mai mult de &6<number> &cgeneratoare !'
-      cant-pick-up: '&cNu aveți permisiunea de a lua generatorul lui &6<owner>&c!'
-      cant-use: '&cNu aveți permisiunea de a folosi generatorul lui &6<owner>&c!'
+      owner-none: '<red>Nimic'
+      cant-place-more: '<red>Nu aveți permisiunea de a pune mai mult de <gold><number> <red>generatoare !'
+      cant-place-more-type: 'cNu aveți permisiunea de a pune mai mult de <gold><number> <red>generatoare !'
+      cant-pick-up: '<red>Nu aveți permisiunea de a lua generatorul lui <gold><owner><red>!'
+      cant-use: '<red>Nu aveți permisiunea de a folosi generatorul lui <gold><owner><red>!'
     protection:
-      cant-change-generator-item: '&cNu aveți permisiunea de a modifica conținutul generatorului !'
+      cant-change-generator-item: '<red>Nu aveți permisiunea de a modifica conținutul generatorului !'
     menus:
-      cant-open-already-viewed: '&cNu aveți permisiunea de a deschide meniul ! Cineva î-l folosește deja !'
-      cant-open-not-owner: '&cNu aveți permisiunea de a deschide meniul ! Doar proprietarii 
+      cant-open-already-viewed: '<red>Nu aveți permisiunea de a deschide meniul ! Cineva î-l folosește deja !'
+      cant-open-not-owner: '<red>Nu aveți permisiunea de a deschide meniul ! Doar proprietarii 
       generatorului au permisiunea !'
   economy:
-    no-economy-avaible: '&cNu este nici-un sistem economic disponibil !'
-    not-enough-money: '&cNu aveți destui bani ! Aveți nevoie de &6<cost>$&c!'
-    done: '&aAți upgradat &e<number> &ageneratoarele pentru prețul de &e<cost>$&a!'
+    no-economy-avaible: '<red>Nu este nici-un sistem economic disponibil !'
+    not-enough-money: '<red>Nu aveți destui bani ! Aveți nevoie de <gold><cost>$<red>!'
+    done: '<green>Ați upgradat <yellow><number> <green>generatoarele pentru prețul de <yellow><cost>$<green>!'
   commands:
     any:
-      wrong: '&cComandă grețită ! Scrieți comanda /kgenerators pentru ajutor !'
-      no-permission: '&cNu aveți permisiunea &8(&7<permission>&8)&c de a folosi comenzile 
+      wrong: '<red>Comandă grețită ! Scrieți comanda /kgenerators pentru ajutor !'
+      no-permission: '<red>Nu aveți permisiunea <dark_gray>(<gray><permission><dark_gray>)<red> de a folosi comenzile 
       pentru generatoare !'
-      player-not-online: '&cJucătorul nu este online !'
-      player-doesnt-exist: '&cJucătorul nu există !'
-      generator-doesnt-exist: '&cAcest generator nu există !'
-      menu-doesnt-exist: '&cAcest meniu nu există !'
+      player-not-online: '<red>Jucătorul nu este online !'
+      player-doesnt-exist: '<red>Jucătorul nu există !'
+      generator-doesnt-exist: '<red>Acest generator nu există !'
+      menu-doesnt-exist: '<red>Acest meniu nu există !'
     list:
-      header: '&aGeneratoare:'
-      list: '&8- <generator> &8(&7ID: <generatorID>&8)'
-      no-permission: '&cNu aveți permisiunea &8(&7<permission>&8)&cde a vedea generatoarele !'
+      header: '<green>Generatoare:'
+      list: '<dark_gray>- <generator> <dark_gray>(<gray>ID: <generatorID><dark_gray>)'
+      no-permission: '<red>Nu aveți permisiunea <dark_gray>(<gray><permission><dark_gray>)<red>de a vedea generatoarele !'
       help: Vedeți toate generatoarele
     give:
-      generator-given: '&aGeneratorul <generator> &ai-a fost oferit la &e<player>'
-      generator-recieved: '&aGenerator <generator> &aprimit !'
-      usage: '&cFolosește: &e/kgenerators give <player> <generator>'
-      no-permission: '&cNu aveți permisiunea &8(&7<permission>&8)&cde a oferii generatoare !'
+      generator-given: '<green>Generatorul <generator> <green>i-a fost oferit la <yellow><player>'
+      generator-recieved: '<green>Generator <generator> <green>primit !'
+      usage: '<red>Folosește: <yellow>/kgenerators give <player> <generator>'
+      no-permission: '<red>Nu aveți permisiunea <dark_gray>(<gray><permission><dark_gray>)<red>de a oferii generatoare !'
       help: Oferă generator la jucător
     getall:
-      recieved: '&aGeneratoare primite'
-      no-permission: '&cNu aveți permisiunea &8(&7<permission>&8)&cde a lua toate generatoarele !'
+      recieved: '<green>Generatoare primite'
+      no-permission: '<red>Nu aveți permisiunea <dark_gray>(<gray><permission><dark_gray>)<red>de a lua toate generatoarele !'
       help: Primește toate generatoarele
     check:
-      header: '&aJucătorul &e<player> &aa plasat:'
-      list: '&8- &e<number> <generator>'
-      no-permission-own: '&cNu aveți permisiunea &8(&7<permission>&8)&c de a verifica altele !'
+      header: '<green>Jucătorul <yellow><player> <green>a plasat:'
+      list: '<dark_gray>- <yellow><number> <generator>'
+      no-permission-own: '<red>Nu aveți permisiunea <dark_gray>(<gray><permission><dark_gray>)<red> de a verifica altele !'
       help: Verifică generatoarele și limitele jucătorilor
     limits:
-      header: '&aJucătorul &e<player> &aare limitele:'
-      specific: '&8- <generator>&a: &e<limit>'
-      overall: '&8- &aToate limitele: &e<limit>'
+      header: '<green>Jucătorul <yellow><player> <green>are limitele:'
+      specific: '<dark_gray>- <generator><green>: <yellow><limit>'
+      overall: '<dark_gray>- <green>Toate limitele: <yellow><limit>'
       None: Niciunul
     actions:
-      no-permission: '&cNu aveți permisiunea &8(&7<permission>&8)&cde a verifica acțiunile !'
+      no-permission: '<red>Nu aveți permisiunea <dark_gray>(<gray><permission><dark_gray>)<red>de a verifica acțiunile !'
       help: Verificați actiunile posibile
-      header: '&aAcțiuni posibile pentru generator:'
-      list: '&6<action> &8- &e<sneak><mode><item>'
+      header: '<green>Acțiuni posibile pentru generator:'
+      list: '<gold><action> <dark_gray>- <yellow><sneak><mode><item>'
       sneak: 'streacoară-te și '
       break: sparge blocul
       left-click: Click stânga
@@ -87,8 +87,8 @@ messages:
       gui: Deschide GUI
       time-left: Timp rămas
     timeleft:
-      no-generator: '&cNu vă uitați la generator în timp ce se regenerează !'
-      no-permission: '&cNu aveți permisiunea &8(&7<permission>&8)&cde a verifica timpul rămas 
+      no-generator: '<red>Nu vă uitați la generator în timp ce se regenerează !'
+      no-permission: '<red>Nu aveți permisiunea <dark_gray>(<gray><permission><dark_gray>)<red>de a verifica timpul rămas 
       pentru regenerarea generatorului !'
       help: Verificați timpul pentru regenerarea generatorului
       format:
@@ -98,30 +98,30 @@ messages:
         days: d
         none: Nimic
     menu:
-      no-permission: '&cNu aveți permisiunea &8(&7<permission>&8)&c de a deschide meniul !'
+      no-permission: '<red>Nu aveți permisiunea <dark_gray>(<gray><permission><dark_gray>)<red> de a deschide meniul !'
       help: Deschide meniul
-      opened-others: '&aMeniu&e<generator> <menu> deschis &apentru &e<player>&'
-      no-permission-others: '&cNu aveți permisiunea &8(&7<permission>&8)&cde adeschide meiul 
+      opened-others: '<green>Meniu<yellow><generator> <menu> deschis <green>pentru <yellow><player>&'
+      no-permission-others: '<red>Nu aveți permisiunea <dark_gray>(<gray><permission><dark_gray>)<red>de adeschide meiul 
       pentru alți jucători !'
     upgrade:
-      no-next-level: '&cAcesta este nivelul maxim pentru generator !'
-      no-permission: '&cNu aveți permisiunea &8(&7<permission>&8)&cde a da upgrade la generator !'
-      no-a-generator: '&cNu aveți generatorul în mână !'
+      no-next-level: '<red>Acesta este nivelul maxim pentru generator !'
+      no-permission: '<red>Nu aveți permisiunea <dark_gray>(<gray><permission><dark_gray>)<red>de a da upgrade la generator !'
+      no-a-generator: '<red>Nu aveți generatorul în mână !'
       help: Upgrade generator
     reload:
-      done: '&aPlugin reâncărcat! Verificați consola sau log.txt în documentul pluginului 
+      done: '<green>Plugin reâncărcat! Verificați consola sau log.txt în documentul pluginului 
       pentru erori !'
-      no-permission: '&cNu aveți permisiunea &8(&7<permission>&8)&cde a reâncărca pluginul !'
+      no-permission: '<red>Nu aveți permisiunea <dark_gray>(<gray><permission><dark_gray>)<red>de a reâncărca pluginul !'
       help: Plugin reâncărcat
     debug:
-      done: '&aURL-ul tău pentru debug este: &e<url>'
-      error: '&cA apărut o eroare, în timp ce s-a dat debug !'
-      no-permission: '&cNu aveți permisiunea &8(&7<permission>&8)&cde a plasa debug'
+      done: '<green>Fișierul de debug a fost salvat: <yellow><file>'
+      error: '<red>A apărut o eroare, în timp ce s-a dat debug !'
+      no-permission: '<red>Nu aveți permisiunea <dark_gray>(<gray><permission><dark_gray>)<red>de a plasa debug'
     help:
-      label: '&4&lGenerator DaciiGaming &fComanda help:'
-      format: '&e/kgenerators <subcommand> &7<help>'
+      label: '<dark_red><bold>Generator DaciiGaming <reset><white>Comanda help:'
+      format: '<yellow>/kgenerators <subcommand> <gray><help>'
 holograms:
   remaining-time:
   - '<generator_name>'
-  - '&6Timp rămas:'
-  - '&e<time>'
+  - '<gold>Timp rămas:'
+  - '<yellow><time>'

@@ -1,5 +1,4 @@
 .idea/
-target/
 bin/
 .settings/
 *.project
@@ -17,3 +16,6 @@ bin/
 *.tar.gz
 *.rar
 dependency-reduced-pom.xml
+.gradle/
+build/
+!gradle/wrapper/gradle-wrapper.jar

@@ -9,6 +9,21 @@ import me.kryniowesegryderiusz.kgenerators.generators.locations.objects.Generato
 
 public abstract class IHologramProvider {
 
+	/**
+	 * Called once, when plugin is being enabled
+	 */
+	public abstract void start();
+
+	/**
+	 * Applies changed settings to existing holograms. Call only on main thread.
+	 */
+	public abstract void reload();
+
+	/**
+	 * Removes all holograms. Call only on main thread.
+	 */
+	public abstract void removeAll();
+
 	protected abstract void providerCreateHologram(GeneratorLocation gLocation, ArrayList<String> lines);
 
 	protected abstract void providerUpdateHologram(GeneratorLocation gLocation, ArrayList<String> lines);

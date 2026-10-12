@@ -21,7 +21,7 @@ public class PlayerInteractListener implements Listener {
 
 		try {
 
-			if (Main.getMultiVersion().isHigher(9) && e.getHand() != EquipmentSlot.HAND)
+			if (e.getHand() != EquipmentSlot.HAND)
 				return;
 
 			if (e.useInteractedBlock() == Event.Result.DENY || e.getClickedBlock() == null)
@@ -33,8 +33,7 @@ public class PlayerInteractListener implements Listener {
 			GeneratorLocation gLocation = Main.getPlacedGenerators().getLoaded(location);
 			if (gLocation == null)
 				gLocation = Main.getPlacedGenerators().getLoaded(upperLocation);
-			else if (e.getAction() == Action.RIGHT_CLICK_BLOCK && Main.getMultiVersion().isHigher(12)
-					&& e.getClickedBlock().getType().isInteractable())
+			else if (e.getAction() == Action.RIGHT_CLICK_BLOCK && e.getClickedBlock().getType().isInteractable())
 				e.setUseInteractedBlock(Event.Result.DENY);
 			
 			if (gLocation == null)

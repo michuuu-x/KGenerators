@@ -1,196 +1,196 @@
 generator:
-  name: '&9Informații generator'
+  name: '<blue>Informații generator'
   slots: 45
   filler:
     enabled: true
     item: GRAY_STAINED_GLASS_PANE
-    name: '&r'
+    name: '<reset>'
     lore: []
     slots: 0,1,2,3,4,5,6,7,8,9,17,18,26,27,35,36,37,38,39,40,41,42,43,44
     glow: false
   owner:
     enabled: true
     item: BOOK
-    name: '&aProprietar generator'
+    name: '<green>Proprietar generator'
     lore:
-    - '&e<owner>'
+    - '<yellow><owner>'
     slots: '22'
     glow: false
   pick-up:
     enabled: true
     item: BARRIER
-    name: '&aPick up'
+    name: '<green>Pick up'
     lore:
-    - '&aClick să iei generatorul'
+    - '<green>Click să iei generatorul'
     slots: '23'
     glow: false
   time-left:
     enabled: true
     item: CLOCK
-    name: '&aTimp rămas pentru regenerare'
+    name: '<green>Timp rămas pentru regenerare'
     lore:
-    - '&a<time>'
+    - '<green><time>'
     slots: '21'
     glow: false
   quit:
     enabled: true
     item: ARROW
-    name: '&cIeși'
+    name: '<red>Ieși'
     lore:
-    - '&6Ișire din meniu'
+    - '<gold>Ișire din meniu'
     slots: '40'
     glow: false
 main:
-  name: '&9Generatoare'
+  name: '<blue>Generatoare'
   slots: 45
   filler:
     enabled: true
     item: GRAY_STAINED_GLASS_PANE
-    name: '&r'
+    name: '<reset>'
     lore: []
     slots: 0,1,2,3,4,5,6,7,8,36,37,38,39,40,41,42,43,44
     glow: false
   generator:
     enabled: true
     item: <generator>
-    name: '&a<generator_name>'
+    name: '<green><generator_name>'
     lore:
-    - '&6Click stânga:'
-    - '&eVerifică șansele generatoarelor'
+    - '<gold>Click stânga:'
+    - '<yellow>Verifică șansele generatoarelor'
     slots: 9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35
     glow: false
   quit:
     enabled: true
     item: ARROW
-    name: '&cIeși'
+    name: '<red>Ieși'
     lore:
-    - '&6Ieșire din meniu'
+    - '<gold>Ieșire din meniu'
     slots: '40'
     glow: false
 recipe:
-  name: '&9Conținut'
+  name: '<blue>Conținut'
   slots: 45
   filler:
     enabled: true
     item: GRAY_STAINED_GLASS_PANE
-    name: '&r'
+    name: '<reset>'
     lore: []
     slots: 0,1,2,3,4,5,6,7,8,36,37,38,39,40,41,42,43,44
     glow: false
   back:
     enabled: true
     item: ARROW
-    name: '&cÎnapoi'
+    name: '<red>Înapoi'
     lore:
-    - '&6Mergi înapoi'
-    - '&cla pagina anterioară'
+    - '<gold>Mergi înapoi'
+    - '<red>la pagina anterioară'
     slots: '40'
     glow: false
   marker:
     enabled: true
     item: CRAFTING_TABLE
-    name: '&aCraftează'
+    name: '<green>Craftează'
     lore: []
     slots: 14,23,32
     glow: false
   ingredients:
     enabled: true
     item: <block>
-    name: '&a<block_name>'
+    name: '<green><block_name>'
     lore: []
     slots: 10,11,12,19,20,21,28,29,30
     glow: false
   result:
     enabled: true
     item: <generator>
-    name: '&a<generator_name>'
+    name: '<green><generator_name>'
     lore: []
     slots: '25'
     glow: false
 upgrade:
-  name: '&9Upgrade'
+  name: '<blue>Upgrade'
   slots: 45
   back:
     enabled: true
     item: ARROW
-    name: '&cÎnapoi'
+    name: '<red>Înapoi'
     lore:
-    - '&6Mergi înapoi'
-    - '&cla pagina anterioară'
+    - '<gold>Mergi înapoi'
+    - '<red>la pagina anterioară'
     slots: '40'
     glow: false
   marker:
     enabled: true
     item: EXPERIENCE_BOTTLE
-    name: '&aUpgrade'
+    name: '<green>Upgrade'
     lore:
-    - '&6Pentru upgrade'
-    - '&6la generator ia-l în mână și scrie'
-    - '&e/kgenerators upgrade'
-    - '&6Preț: &e<cost>$'
+    - '<gold>Pentru upgrade'
+    - '<gold>la generator ia-l în mână și scrie'
+    - '<yellow>/kgenerators upgrade'
+    - '<gold>Preț: <yellow><cost>$'
     slots: 13,22,31
     glow: false
   ingredient:
     enabled: true
     item: <generator>
-    name: '&a<generator_name>'
+    name: '<green><generator_name>'
     lore: []
     slots: '20'
     glow: false
   filler:
     enabled: true
     item: GRAY_STAINED_GLASS_PANE
-    name: '&r'
+    name: '<reset>'
     lore: []
     slots: 0,1,2,3,4,5,6,7,8,36,37,38,39,40,41,42,43,44
     glow: false
   result:
     enabled: true
     item: <generator>
-    name: '&a<generator_name>'
+    name: '<green><generator_name>'
     lore: []
     slots: '24'
     glow: false
 generated-objects:
-  name: '&9Șansele blocurilor'
+  name: '<blue>Șansele blocurilor'
   slots: 45
   filler:
     enabled: true
     item: GRAY_STAINED_GLASS_PANE
-    name: '&r'
+    name: '<reset>'
     lore: []
     slots: 0,1,2,3,4,5,6,7,8,36,37,38,39,40,41,42,43,44
     glow: false
   generated-object:
     enabled: true
     item: <generated_object>
-    name: §a<generated_object_name>
+    name: <green><generated_object_name>
     lore:
     - <generated_object_lore>
     - ''
     - <generated_object_type>
-    - '§6Șansă: §e<chance>%'
+    - '<gold>Șansă: <yellow><chance>%'
     - <generated_object_custom_drops>
     slots: 9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35
     glow: false
   back:
     enabled: true
     item: ARROW
-    name: '&cÎnapoi'
+    name: '<red>Înapoi'
     lore:
-    - '&6Mergi înapoi'
-    - '&cla pagina anterioară'
+    - '<gold>Mergi înapoi'
+    - '<red>la pagina anterioară'
     slots: '40'
     glow: false
 additional-lines:
   upgrades:
     menu-how-to:
     - ''
-    - '&6Click dreapta:'
-    - '&evezi cum'
-    - '&efaci upgrade'
+    - '<gold>Click dreapta:'
+    - '<yellow>vezi cum'
+    - '<yellow>faci upgrade'
   recipes:
     menu-how-to:
     - ''
-    - '&6Click dreapta:'
-    - '&evezi conținutul'
+    - '<gold>Click dreapta:'
+    - '<yellow>vezi conținutul'

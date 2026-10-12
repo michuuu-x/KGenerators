@@ -1,103 +1,103 @@
 #Translated to Simplified Chinese by SnowCutieOwO 
 messages:
-  prefix: '&8[&6KGenerators&8] '
+  prefix: '<dark_gray>[<gold>KGenerators<dark_gray>] '
   generators:
     any:
-      owner-none: '&c无'
-      disabled-specific: '&c<generator> 在该世界中被禁用!'
-      repaired: '&a生成器修复成功!'
-      no-longer-there: '&c生成器已不在该位置!'
+      owner-none: '<red>无'
+      disabled-specific: '<red><generator> 在该世界中被禁用!'
+      repaired: '<green>生成器修复成功!'
+      no-longer-there: '<red>生成器已不在该位置!'
       object-amount: <object> x <amount>
     digging:
-      cant-here: '&c你不能在这里挖掘生成的方块!'
-      only-gen: '&c你只能在这里挖掘生成的方块!'
-      no-permission: '&c你缺少权限 &8(&7<permission>&8)&c 挖掘 <generator>&c!'
+      cant-here: '<red>你不能在这里挖掘生成的方块!'
+      only-gen: '<red>你只能在这里挖掘生成的方块!'
+      no-permission: '<red>你缺少权限 <dark_gray>(<gray><permission><dark_gray>)<red> 挖掘 <generator><red>!'
     crafting:
-      cant-use: '&c你不能从生成器合成任何物品!'
-      no-permission: '&c你缺少权限 &8(&7<permission>&8)&c 合成 <generator>&c!'
+      cant-use: '<red>你不能从生成器合成任何物品!'
+      no-permission: '<red>你缺少权限 <dark_gray>(<gray><permission><dark_gray>)<red> 合成 <generator><red>!'
     timeleft:
-      output: '&a生成器将在 &e<time> &a后重新生成'
+      output: '<green>生成器将在 <yellow><time> <green>后重新生成'
     pick-up:
-      successful: '&a已拾起 &e<generator>'
-      cant-here: '&c你不能在这里拾起生成器!'
-      no-permission: '&c你缺少权限 &8(&7<permission>&8)&c 拾起这种类型的生成器!'
+      successful: '<green>已拾起 <yellow><generator>'
+      cant-here: '<red>你不能在这里拾起生成器!'
+      no-permission: '<red>你缺少权限 <dark_gray>(<gray><permission><dark_gray>)<red> 拾起这种类型的生成器!'
     place:
-      cant-here: '&c你不能在这里放置生成器!'
-      cant-place-block: '&c你不能在生成器附近放置方块'
-      cant-place-double-below-block: '&c你不能在任何方块底部放置生成器!'
-      cant-place-double-below-generator: '&c你不能在其他生成器底部放置生成器!'
-      no-permission: '&c你缺少权限 &8(&7<permission>&8)&c 放置该类型的生成器'
+      cant-here: '<red>你不能在这里放置生成器!'
+      cant-place-block: '<red>你不能在生成器附近放置方块'
+      cant-place-double-below-block: '<red>你不能在任何方块底部放置生成器!'
+      cant-place-double-below-generator: '<red>你不能在其他生成器底部放置生成器!'
+      no-permission: '<red>你缺少权限 <dark_gray>(<gray><permission><dark_gray>)<red> 放置该类型的生成器'
     limits:
-      cant-place-more-type: '&c你不能放置多于 &6<number> &c个的 <generator> &c生成器, 因为 &6<limit>&c!'
-      cant-pick-up: '&c你不能拾起 &6<owner>&c 拥有的生成器!'
-      cant-use: '&c你不能使用 &6<owner>&c 拥有的生成器!'
+      cant-place-more-type: '<red>你不能放置多于 <gold><number> <red>个的 <generator> <red>生成器, 因为 <gold><limit><red>!'
+      cant-pick-up: '<red>你不能拾起 <gold><owner><red> 拥有的生成器!'
+      cant-use: '<red>你不能使用 <gold><owner><red> 拥有的生成器!'
     protection:
-      cant-change-generator-item: '&c你不能改变生成的物品!'
+      cant-change-generator-item: '<red>你不能改变生成的物品!'
     menus:
-      cant-open-here: '&c你不能打开该菜单!'
+      cant-open-here: '<red>你不能打开该菜单!'
     chunks:
-      not-loaded-yet: '&c该区块数据仍在载入! 请稍等再试!'
+      not-loaded-yet: '<red>该区块数据仍在载入! 请稍等再试!'
   economy:
-    no-economy-avaible: '&c无可挂钩的经济插件!'
-    not-enough-money: '&c你没有足够的钱! 你至少需要 &6<cost>&c!'
+    no-economy-avaible: '<red>无可挂钩的经济插件!'
+    not-enough-money: '<red>你没有足够的钱! 你至少需要 <gold><cost><red>!'
   upgrades:
-    upgraded: '&a你花费了 &e<costs> &a将 &e<number> &a生成器升级了!'
-    gui-upgraded: '&c你没有 &4<cost>&c!'
+    upgraded: '<green>你花费了 <yellow><costs> <green>将 <yellow><number> <green>生成器升级了!'
+    gui-upgraded: '<red>你没有 <dark_red><cost><red>!'
     separator: ', '
-    no-next-level: '&c该生成器已满级!'
-    no-permission: '&c你缺少权限 &8(&7<permission>&8)&c 升级生成器!'
+    no-next-level: '<red>该生成器已满级!'
+    no-permission: '<red>你缺少权限 <dark_gray>(<gray><permission><dark_gray>)<red> 升级生成器!'
   upgardes:
-    not-a-generator: '&c你的手中没有生成器!'
+    not-a-generator: '<red>你的手中没有生成器!'
     costs:
       exp: 经验
       exp-levels: 经验等级
   hooks:
     explode-pickaxe:
-      cannot-use-on-double: '&c你不能将爆炸镐对着这个生成器使用!'
+      cannot-use-on-double: '<red>你不能将爆炸镐对着这个生成器使用!'
   database:
-    error: '&c数据库出错, 请联系管理员!'
+    error: '<red>数据库出错, 请联系管理员!'
   commands:
     any:
-      wrong: '&c命令错误! 请输入 /kgenerators 获取帮助'
-      no-permission: '&c你缺少权限 &8(&7<permission>&8)&c 使用 KGenerators
+      wrong: '<red>命令错误! 请输入 /kgenerators 获取帮助'
+      no-permission: '<red>你缺少权限 <dark_gray>(<gray><permission><dark_gray>)<red> 使用 KGenerators
         命令'
-      player-not-online: '&c玩家不在线'
-      player-doesnt-exist: '&c玩家不存在'
-      generator-doesnt-exist: '&c生成器不存在'
-      menu-doesnt-exist: '&c菜单不存在'
-      console-only: '&c该命令仅可由控制台执行!'
-      not-a-integer: '&c''<variable>'' 应当为整数!'
-      not-a-floating-point-number: '&c''<variable>'' 应该为小数!'
-      world-doesnt-exist: '&c世界 ''<world>'' 不存在'
+      player-not-online: '<red>玩家不在线'
+      player-doesnt-exist: '<red>玩家不存在'
+      generator-doesnt-exist: '<red>生成器不存在'
+      menu-doesnt-exist: '<red>菜单不存在'
+      console-only: '<red>该命令仅可由控制台执行!'
+      not-a-integer: '<red>''<variable>'' 应当为整数!'
+      not-a-floating-point-number: '<red>''<variable>'' 应该为小数!'
+      world-doesnt-exist: '<red>世界 ''<world>'' 不存在'
     list:
-      header: '&a生成器:'
-      list: '&8- <generator> &8(&7ID: <generatorID>&8)'
-      no-permission: '&c你缺少权限 &8(&7<permission>&8)&c 列出生成器'
+      header: '<green>生成器:'
+      list: '<dark_gray>- <generator> <dark_gray>(<gray>ID: <generatorID><dark_gray>)'
+      no-permission: '<red>你缺少权限 <dark_gray>(<gray><permission><dark_gray>)<red> 列出生成器'
       help: 列出所有生成器
     menu:
-      opened-others: '&a为玩家 &e<player> &a打开 &e<generator> <menu> 菜单'
-      error: '&c使用菜单时出现错误! 请联系管理员!'
-      no-permission: '&c你缺少权限 &8(&7<permission>&8)&c 打开菜单!'
-      no-permission-others: '&c你缺少权限 &8(&7<permission>&8)&c 为其他玩家打开菜单!'
+      opened-others: '<green>为玩家 <yellow><player> <green>打开 <yellow><generator> <menu> 菜单'
+      error: '<red>使用菜单时出现错误! 请联系管理员!'
+      no-permission: '<red>你缺少权限 <dark_gray>(<gray><permission><dark_gray>)<red> 打开菜单!'
+      no-permission-others: '<red>你缺少权限 <dark_gray>(<gray><permission><dark_gray>)<red> 为其他玩家打开菜单!'
       help: 打开菜单
     give:
-      generator-given: '&e<amount>x &a<generator> &a已发送至玩家 &e<player> &a的背包'
-      generator-recieved: '&a你获得了 &e<amount>x &a<generator>&a!'
-      usage: '&c命令用法: &e/kgenerators give <玩家名称> <生成器> [数量]'
-      no-permission: '&c你缺少权限 &8(&7<permission>&8)&c 给予生成器'
+      generator-given: '<yellow><amount>x <green><generator> <green>已发送至玩家 <yellow><player> <green>的背包'
+      generator-recieved: '<green>你获得了 <yellow><amount>x <green><generator><green>!'
+      usage: '<red>命令用法: <yellow>/kgenerators give <玩家名称> <生成器> [数量]'
+      no-permission: '<red>你缺少权限 <dark_gray>(<gray><permission><dark_gray>)<red> 给予生成器'
       help: 给予其他玩家生成器
     getall:
-      recieved: '&a已获得生成器'
-      no-permission: '&c你缺少权限 &8(&7<permission>&8)&c 获得所有生成器'
+      recieved: '<green>已获得生成器'
+      no-permission: '<red>你缺少权限 <dark_gray>(<gray><permission><dark_gray>)<red> 获得所有生成器'
       help: 获得所有生成器
     limits:
-      no-permission: '&c你缺少权限 &8(&7<permission>&8)&c 打开限制菜单!'
+      no-permission: '<red>你缺少权限 <dark_gray>(<gray><permission><dark_gray>)<red> 打开限制菜单!'
       help: 检查限制
     actions:
-      no-permission: '&c你缺少权限 &8(&7<permission>&8)&c 检查操作!'
+      no-permission: '<red>你缺少权限 <dark_gray>(<gray><permission><dark_gray>)<red> 检查操作!'
       help: 检查可用操作
-      header: '&a生成器可用的操作:'
-      list: '&6<action> &8- &e<sneak><mode><item>'
+      header: '<green>生成器可用的操作:'
+      list: '<gold><action> <dark_gray>- <yellow><sneak><mode><item>'
       sneak: '蹲下'
       break: 破坏方块
       left-click: 左键
@@ -107,8 +107,8 @@ messages:
       gui: 打开界面
       time-left: 剩余时间
     timeleft:
-      no-generator: '&c你没有看向正在产生物品的生成器!'
-      no-permission: '&c你缺少权限 &8(&7<permission>&8)&c 检查生成剩余时间'
+      no-generator: '<red>你没有看向正在产生物品的生成器!'
+      no-permission: '<red>你缺少权限 <dark_gray>(<gray><permission><dark_gray>)<red> 检查生成剩余时间'
       help: 检查生成剩余时间
       format:
         seconds: 秒
@@ -117,32 +117,32 @@ messages:
         days: 天
         none: 无
     spawn:
-      done: '&a已产生新生成器! 新生成器位于: &e<location_info>'
-      usage: '&c用法: &e/kgenerators spawn <世界名称> <x> <y> <z> <生成器类型> [拥有者]'
-      no-permission: '&c你缺少权限 &8(&7<permission>&8)&c 生成生成器!'
+      done: '<green>已产生新生成器! 新生成器位于: <yellow><location_info>'
+      usage: '<red>用法: <yellow>/kgenerators spawn <世界名称> <x> <y> <z> <生成器类型> [拥有者]'
+      no-permission: '<red>你缺少权限 <dark_gray>(<gray><permission><dark_gray>)<red> 生成生成器!'
       help: 将指定类型的生成器放置在指定世界的指定位置
     remove:
-      done: '&a移除了 <amount> 个生成器!'
-      usage: '&c用法: &e/kgenerators remove worldedit'
-      no-permission: '&c你缺少权限 &8(&7<permission>&8)&c 移除生成器!'
+      done: '<green>移除了 <amount> 个生成器!'
+      usage: '<red>用法: <yellow>/kgenerators remove worldedit'
+      no-permission: '<red>你缺少权限 <dark_gray>(<gray><permission><dark_gray>)<red> 移除生成器!'
       help: 移除生成器
-      worldedit-not-found: '&c未找到 WorldEdit!'
-      worldedit-wrong-selection: '&c选区不正确!'
+      worldedit-not-found: '<red>未找到 WorldEdit!'
+      worldedit-wrong-selection: '<red>选区不正确!'
     upgrade:
       help: 升级生成器
     reload:
-      done: '&a插件配置已重载! 检查控制台或插件内的 log.txt 来浏览可能出现的错误!'
-      no-permission: '&c你缺少权限 &8(&7<permission>&8)&c 重载插件'
+      done: '<green>插件配置已重载! 检查控制台或插件内的 log.txt 来浏览可能出现的错误!'
+      no-permission: '<red>你缺少权限 <dark_gray>(<gray><permission><dark_gray>)<red> 重载插件'
       help: 重载插件配置
     debug:
-      done: '&a调试信息链接为: &e<url>'
-      error: '&c生成调试输出时遇到错误!'
-      no-permission: '&c你缺少权限 &8(&7<permission>&8)&c 上传调试报告'
+      done: '<green>调试文件已保存: <yellow><file>'
+      error: '<red>生成调试输出时遇到错误!'
+      no-permission: '<red>你缺少权限 <dark_gray>(<gray><permission><dark_gray>)<red> 上传调试报告'
     help:
-      label: '&6&lKGenerators &a命令帮助:'
-      format: '&e/kgenerators <subcommand> &7<help>'
+      label: '<gold><bold>KGenerators <reset><green>命令帮助:'
+      format: '<yellow>/kgenerators <subcommand> <gray><help>'
 holograms:
   remaining-time:
   - <generator_name>
-  - '&6剩余时间:'
-  - '&e<time>'
+  - '<gold>剩余时间:'
+  - '<yellow><time>'

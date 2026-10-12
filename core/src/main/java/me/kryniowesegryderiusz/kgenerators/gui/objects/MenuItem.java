@@ -1,5 +1,6 @@
 package me.kryniowesegryderiusz.kgenerators.gui.objects;
 
+import me.kryniowesegryderiusz.kgenerators.utils.ChatUtils;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -73,13 +74,13 @@ public class MenuItem implements Cloneable {
 
 	public void addLore(String loreLine) {
 		if (loreLine != null)
-			this.lore.add(Main.getMultiVersion().getChatUtils().colorize(loreLine));
+			this.lore.add(loreLine);
 	}
 
 	public void addLore(String... lore) {
 		for (String s : Arrays.asList(lore)) {
 			if (s != null)
-				this.lore.add(Main.getMultiVersion().getChatUtils().colorize(s));
+				this.lore.add(s);
 		}
 	}
 
@@ -90,13 +91,13 @@ public class MenuItem implements Cloneable {
 	public void addLore(ArrayList<String> lore) {
 		for (String s : lore) {
 			if (s != null)
-				this.lore.add(Main.getMultiVersion().getChatUtils().colorize(s));
+				this.lore.add(s);
 		}
 	}
 
 	public void setName(String name) {
 		if (name != null)
-			this.name = Main.getMultiVersion().getChatUtils().colorize(name);
+			this.name = name;
 	}
 
 	public void replace(String key, String value) {
@@ -112,7 +113,7 @@ public class MenuItem implements Cloneable {
 			if (s.contains(key)) {
 				if (stringContent != null) {
 					for (String as : stringContent.getLines()) {
-						newDesc.add(Main.getMultiVersion().getChatUtils().colorize(as));
+						newDesc.add(as);
 					}
 				}
 			} else {
@@ -139,10 +140,10 @@ public class MenuItem implements Cloneable {
 			meta = Main.getInstance().getServer().getItemFactory().getItemMeta(item.getType());
 		}
 
-		meta.setDisplayName(this.name);
+		ChatUtils.setDisplayName(meta, this.name);
 
 		if (!lore.isEmpty())
-			meta.setLore(this.lore);
+			ChatUtils.setLore(meta, this.lore);
 
 		if (glow)
 			meta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
@@ -150,7 +151,7 @@ public class MenuItem implements Cloneable {
 		item.setItemMeta(meta);
 
 		if (glow)
-			item.addUnsafeEnchantment(Enchantment.LOOT_BONUS_BLOCKS, 1);
+			item.addUnsafeEnchantment(Enchantment.FORTUNE, 1);
 		
 		item = PlaceholderAPIHook.translatePlaceholders(p, item);
 		

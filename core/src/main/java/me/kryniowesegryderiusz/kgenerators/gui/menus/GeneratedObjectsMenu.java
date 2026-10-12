@@ -1,5 +1,6 @@
 package me.kryniowesegryderiusz.kgenerators.gui.menus;
 
+import me.kryniowesegryderiusz.kgenerators.utils.ChatUtils;
 import java.util.ArrayList;
 import java.util.Map.Entry;
 
@@ -75,12 +76,12 @@ public class GeneratedObjectsMenu {
 				chanceMenuItem.setItemStack(agoGuiItem);
 			
 			if (agoGuiItem.hasItemMeta() && agoGuiItem.getItemMeta().hasDisplayName())
-				chanceMenuItem.replace("<generated_object_name>", agoGuiItem.getItemMeta().getDisplayName());
+				chanceMenuItem.replace("<generated_object_name>", ChatUtils.getDisplayName(agoGuiItem));
 			else
 				chanceMenuItem.replace("<generated_object_name>", Lang.getCustomNamesStorage().getItemTypeName(agoGuiItem));
 			
 			if(agoGuiItem.hasItemMeta() && agoGuiItem.getItemMeta().hasLore())
-				chanceMenuItem.replaceLore("<generated_object_lore>", new StringContent().addLines((ArrayList<String>) agoGuiItem.getItemMeta().getLore()));
+				chanceMenuItem.replaceLore("<generated_object_lore>", new StringContent().addLines(new ArrayList<String>(ChatUtils.getLore(agoGuiItem))));
 			else
 				chanceMenuItem.replaceLore("<generated_object_lore>", new StringContent());
 			

@@ -2,9 +2,9 @@ package me.kryniowesegryderiusz.kgenerators.dependencies.objects;
 
 import java.util.Map;
 
+import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
 
-import com.cryptomorin.xseries.XMaterial;
 
 import dev.lone.itemsadder.api.CustomBlock;
 import lombok.Getter;
@@ -50,7 +50,7 @@ public class GeneratedItemsAdderBlock extends AbstractGeneratedObject {
 	public ItemStack getGuiItem() {
 		CustomBlock customBlock = this.getCustomBlock();
 		if (customBlock == null)
-			return XMaterial.STONE.parseItem();
+			return new ItemStack(Material.STONE);
 		return this.getCustomBlock().getItemStack();
 	}
 

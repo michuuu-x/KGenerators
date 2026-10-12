@@ -1,17 +1,17 @@
 package me.kryniowesegryderiusz.kgenerators.utils.objects;
 
 import org.bukkit.Location;
+import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
 
 import me.kryniowesegryderiusz.kgenerators.Main;
-import com.cryptomorin.xseries.XMaterial;
 
 public class HeadCustomBlockData extends CustomBlockData  {
-	
+
 	private String skullBase64;
-	
-	public HeadCustomBlockData(XMaterial xMaterial, String skullBase64) {
-		super(xMaterial);
+
+	public HeadCustomBlockData(Material material, String skullBase64) {
+		super(material);
 		this.skullBase64 = skullBase64;
 	}
 	

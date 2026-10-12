@@ -3,10 +3,7 @@ package me.kryniowesegryderiusz.kgenerators.generators.locations.handlers;
 import org.bukkit.entity.Player;
 
 import me.kryniowesegryderiusz.kgenerators.Main;
-import me.kryniowesegryderiusz.kgenerators.dependencies.hooks.BentoBoxHook;
-import me.kryniowesegryderiusz.kgenerators.dependencies.hooks.FactionsUUIDHook;
 import me.kryniowesegryderiusz.kgenerators.dependencies.hooks.LandsHook;
-import me.kryniowesegryderiusz.kgenerators.dependencies.hooks.PlotSquaredHook;
 import me.kryniowesegryderiusz.kgenerators.dependencies.hooks.SuperiorSkyblock2Hook;
 import me.kryniowesegryderiusz.kgenerators.dependencies.hooks.WorldGuardHook;
 import me.kryniowesegryderiusz.kgenerators.generators.generator.objects.Generator;
@@ -42,11 +39,8 @@ public class GeneratorLocationPickUpHandler {
 		}
 		
 		if (!WorldGuardHook.isPlayerAllowedToPickUp(p, gLocation.getLocation())
-				|| !BentoBoxHook.isAllowed(p, BentoBoxHook.Type.PICKUP_FLAG, gLocation.getLocation()) 
 				|| !SuperiorSkyblock2Hook.isAllowed(p, SuperiorSkyblock2Hook.Type.PICKUP_FLAG, gLocation.getLocation())
-				|| !PlotSquaredHook.isPlayerAllowedToPickUp(p, gLocation.getLocation())
-				|| !LandsHook.isPlayerAllowedToPickUp(p, gLocation.getLocation())
-				|| !FactionsUUIDHook.isPlayerAllowedToPickUp(p, gLocation.getLocation())) {
+				|| !LandsHook.isPlayerAllowedToPickUp(p, gLocation.getLocation())) {
 				
 			Lang.getMessageStorage().send(p, Message.GENERATORS_PICK_UP_CANT_HERE);
 			return;
@@ -55,7 +49,7 @@ public class GeneratorLocationPickUpHandler {
 		gLocation.removeGenerator(true, p);
 		Logger.debugPlayer(p.getName() + " picked up " + gLocation.toString());
 		Lang.getMessageStorage().send(p, Message.GENERATORS_PICK_UP_SUCCESFULL,
-				"<generator>", generator.getGeneratorItem().getItemMeta().getDisplayName());
+				"<generator>", generator.getGeneratorItemName());
 		
 		Main.getSettings().getPickupSound().play(p);
 		return;

@@ -100,7 +100,7 @@ public class Limit {
 		else {
 			Lang.getMessageStorage().send(gp.getOnlinePlayer(), Message.GENERATORS_LIMITS_CANT_MORE, "<number>",
 					String.valueOf(this.placeLimit), "<generator>",
-					gloc.getGenerator().getGeneratorItem().getItemMeta().getDisplayName(), "<limit>", this.name);
+					gloc.getGenerator().getGeneratorItemName(), "<limit>", this.name);
 			return false;
 		}
 	}

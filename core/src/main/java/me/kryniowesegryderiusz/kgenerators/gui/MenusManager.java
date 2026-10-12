@@ -10,7 +10,6 @@ import org.bukkit.event.Listener;
 import org.bukkit.inventory.Inventory;
 
 import me.kryniowesegryderiusz.kgenerators.Main;
-import me.kryniowesegryderiusz.kgenerators.dependencies.hooks.BentoBoxHook;
 import me.kryniowesegryderiusz.kgenerators.dependencies.hooks.SuperiorSkyblock2Hook;
 import me.kryniowesegryderiusz.kgenerators.generators.generator.objects.Generator;
 import me.kryniowesegryderiusz.kgenerators.generators.locations.objects.GeneratorLocation;
@@ -79,7 +78,7 @@ public class MenusManager implements Listener {
 	
 	public void openGeneratorMenu(Player p, GeneratorLocation gLocation)
 	{
-		if (!BentoBoxHook.isAllowed(p, BentoBoxHook.Type.OPEN_MENU_FLAG, gLocation.getLocation()) || !SuperiorSkyblock2Hook.isAllowed(p, SuperiorSkyblock2Hook.Type.OPEN_MENU_FLAG, gLocation.getLocation()))
+		if (!SuperiorSkyblock2Hook.isAllowed(p, SuperiorSkyblock2Hook.Type.OPEN_MENU_FLAG, gLocation.getLocation()))
 		{
 			Lang.getMessageStorage().send(p, Message.GENERATOR_MENU_CANT_OPEN_HERE);
 			return;

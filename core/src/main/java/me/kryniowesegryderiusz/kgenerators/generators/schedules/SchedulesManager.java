@@ -6,7 +6,6 @@ import java.util.Map.Entry;
 import java.util.concurrent.ConcurrentHashMap;
 
 import org.bukkit.Bukkit;
-import org.bukkit.Location;
 
 import lombok.Getter;
 import me.kryniowesegryderiusz.kgenerators.Main;
@@ -123,27 +122,16 @@ public class SchedulesManager {
 	 */
 	
 	/**
-	 * @param location Generator location
-	 * @return left ticks or -1 if not exist
+	 * Double generators need no special handling here: PlacedGeneratorsManager#getLoaded
+	 * returns the lower generator for its generated block, so callers always pass the
+	 * generator that owns the schedule.
+	 *
+	 * @param gLocation Generator location
+	 * @return left ticks or -1 if generator is not scheduled
 	 */
 	public int timeLeft(GeneratorLocation gLocation) {
-		if (schedules.containsKey(gLocation))
-			return schedules.get(gLocation).getTimeLeft();
-		else {
-			Location aLocation = gLocation.getLocation().clone().add(0,1,0);
-			GeneratorLocation agLocation;
-			
-			if (Main.getPlacedGenerators().getLoaded(aLocation) != null)
-				return -1;
-			else
-				agLocation = Main.getPlacedGenerators().getLoaded(aLocation);
-			
-			if (agLocation != null && schedules.containsKey(agLocation) && Main.getMultiVersion().getBlocksUtils().isAir(aLocation.getBlock()))
-				return schedules.get(agLocation).getTimeLeft();
-			else
-				return -1;
-		}
-			
+		Schedule schedule = schedules.get(gLocation);
+		return schedule != null ? schedule.getTimeLeft() : -1;
 	}
 	
 	public String timeLeftFormatted(GeneratorLocation gLocation, boolean removeMs) {

@@ -74,7 +74,7 @@ public class RecipeMenu {
 		
 		if (resultItem.getItemType().contains("<generator>"))
 			resultItem.setItemStack(generator.getGeneratorItem());
-		resultItem.replace("<generator_name>", generator.getGeneratorItem().getItemMeta().getDisplayName());
+		resultItem.replace("<generator_name>", generator.getGeneratorItemName());
 		
 		ItemStack readyItem = resultItem.build(player);
 

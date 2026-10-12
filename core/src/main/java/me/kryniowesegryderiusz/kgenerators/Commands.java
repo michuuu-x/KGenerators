@@ -1,5 +1,6 @@
 package me.kryniowesegryderiusz.kgenerators;
 
+import me.kryniowesegryderiusz.kgenerators.utils.ChatUtils;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -65,7 +66,7 @@ public class Commands implements CommandExecutor {
 								"kgenerators.getall");
 					}
 				} else {
-					System.out.println("[KGenerators] Use that command as player!");
+					Logger.textToConsole("Use that command as player!");
 				}
 				break;
 			case "list":
@@ -73,7 +74,7 @@ public class Commands implements CommandExecutor {
 					Lang.getMessageStorage().send(sender, Message.COMMANDS_LIST_HEADER);
 					for (Entry<String, Generator> e : Main.getGenerators().getEntrySet()) {
 						Lang.getMessageStorage().send(sender, Message.COMMANDS_LIST_LIST, false, false, "<generator>",
-								e.getValue().getGeneratorItem().getItemMeta().getDisplayName(), "<generatorID>",
+								ChatUtils.getDisplayName(e.getValue().getGeneratorItem()), "<generatorID>",
 								e.getKey());
 					}
 				} else {
@@ -87,7 +88,7 @@ public class Commands implements CommandExecutor {
 						Player player = (Player) sender;
 						Main.getMenus().openLimitsMenu(player);
 					} else {
-						System.out.println("[KGenerators] Use that command as player!");
+						Logger.textToConsole("Use that command as player!");
 					}
 				} else {
 					Lang.getMessageStorage().send(sender, Message.COMMANDS_LIMITS_NO_PERMISSION, "<permission>",
@@ -168,11 +169,11 @@ public class Commands implements CommandExecutor {
 							player.getInventory().addItem(item);
 
 							Lang.getMessageStorage().send(sender, Message.COMMANDS_GIVE_GENERATOR_GIVEN, "<generator>",
-									item.getItemMeta().getDisplayName(), "<player>", player.getDisplayName(),
+									ChatUtils.getDisplayName(item), "<player>", ChatUtils.serialize(player.displayName()),
 									"<amount>", String.valueOf(amount), label, generatorID);
 
 							Lang.getMessageStorage().send(player, Message.COMMANDS_GIVE_GENERATOR_RECIEVED,
-									"<generator>", item.getItemMeta().getDisplayName(), "<amount>",
+									"<generator>", ChatUtils.getDisplayName(item), "<amount>",
 									String.valueOf(amount));
 						}
 					} else {
@@ -185,7 +186,7 @@ public class Commands implements CommandExecutor {
 				break;
 			case "debug":
 				if (sender.hasPermission("kgenerators.debug") || sender instanceof ConsoleCommandSender) {
-					Logger.debugPaste(sender);
+					Logger.debugDump(sender);
 				} else {
 					Lang.getMessageStorage().send(sender, Message.COMMANDS_DEBUG_NO_PERMISSION, "<permission>",
 							"kgenerators.debug");
@@ -209,7 +210,7 @@ public class Commands implements CommandExecutor {
 								"kgenerators.timeLeft");
 					}
 				} else {
-					System.out.println("[KGenerators] Use that command as player!");
+					Logger.textToConsole("Use that command as player!");
 				}
 				break;
 			case "upgrade":
@@ -231,7 +232,7 @@ public class Commands implements CommandExecutor {
 						if (sender instanceof Player)
 							Main.getMenus().openMainMenu((Player) sender);
 						else
-							System.out.println("[KGenerators] Use that command as player!");
+							Logger.textToConsole("Use that command as player!");
 					} else if (sender.hasPermission("kgenerators.menu.others")) {
 
 						Player player = Bukkit.getPlayer(args[1]);
@@ -286,47 +287,58 @@ public class Commands implements CommandExecutor {
 					return false;
 				}
 
-				if (args.length < 3) {
+				/* spawn worldedit <generator> [owner] or spawn <world> <x> <y> <z> <generator> [owner] */
+				boolean spawnWorldEdit = args.length >= 2 && args[1].equalsIgnoreCase("worldedit");
+				if (args.length < (spawnWorldEdit ? 3 : 6)) {
 					Lang.getMessageStorage().send(sender, Message.COMMANDS_SPAWN_USAGE_COORDINATES);
 					Lang.getMessageStorage().send(sender, Message.COMMANDS_SPAWN_USAGE_WORLDEDIT);
 					return false;
 				}
 				
-				if (args[1].equalsIgnoreCase("worldedit")) {
-					
+				if (spawnWorldEdit) {
+
 					if (!(sender instanceof Player)) {
-						System.out.println("[KGenerators] Use that command as player!");
+						Logger.textToConsole("Use that command as player!");
 						return false;
 					}
-					
-					ArrayList<Location> playerSelection = WorldEditHook.getPlayerSelection((Player) sender);
-					
-					int amount = 0;
-					
-					if (playerSelection != null) {
-						String owner = null;
-						if (args.length >= 4) {
-							owner = args[3];
-						}
-						for (Location l : playerSelection) {
-							GeneratorLocation gl = new GeneratorLocation(-1, Main.getGenerators().get(args[2]), l,
-									Main.getPlacedGenerators().new ChunkInfo(l.getChunk()),
-									Main.getPlayers().getPlayer(owner), null);
-							if (gl.placeGenerator(sender, true))
-								amount++;
-						}
+
+					Generator generator = Main.getGenerators().get(args[2]);
+					if (generator == null) {
+						Lang.getMessageStorage().send(sender, Message.COMMANDS_ANY_GENERATOR_DOESNT_EXIST);
+						return false;
 					}
-					
+
+					ArrayList<Location> playerSelection = WorldEditHook.getPlayerSelection((Player) sender);
+
+					/* WorldEditHook already told the player, what is wrong */
+					if (playerSelection == null)
+						return false;
+
+					int amount = 0;
+
+					String owner = null;
+					if (args.length >= 4) {
+						owner = args[3];
+					}
+					for (Location l : playerSelection) {
+						GeneratorLocation gl = new GeneratorLocation(-1, generator, l,
+								Main.getPlacedGenerators().new ChunkInfo(l.getChunk()),
+								Main.getPlayers().getPlayer(owner), null);
+						if (gl.placeGenerator(sender, true))
+							amount++;
+					}
+
 					Lang.getMessageStorage().send(sender, Message.COMMANDS_SPAWN_DONE_WORLDEDIT, "<amount>", amount+"");
-					
+
 					return false;
-					
+
 				} else {
-					
+
 					if (Bukkit.getWorld(args[1]) == null) {
 						Lang.getMessageStorage().send(sender, Message.COMMANDS_ANY_WORLD_DOESNT_EXIST, "<world>", args[1]);
+						return false;
 					}
-					
+
 					try {
 						Integer.valueOf(args[2]);
 						Integer.valueOf(args[3]);
@@ -345,10 +357,10 @@ public class Commands implements CommandExecutor {
 							GeneratorLocation gl = new GeneratorLocation(-1, g, l,
 									Main.getPlacedGenerators().new ChunkInfo(l.getChunk()),
 									Main.getPlayers().getPlayer(owner), null);
-							gl.placeGenerator(sender, true);
-
-							Lang.getMessageStorage().send(sender, Message.COMMANDS_SPAWN_DONE_COORDINATES, "<location_info>",
-									gl.toString());
+							/* On failure the reason was already sent to the sender by the place handler */
+							if (gl.placeGenerator(sender, true))
+								Lang.getMessageStorage().send(sender, Message.COMMANDS_SPAWN_DONE_COORDINATES, "<location_info>",
+										gl.toString());
 
 						} else
 							Lang.getMessageStorage().send(sender, Message.COMMANDS_ANY_GENERATOR_DOESNT_EXIST);
@@ -378,7 +390,7 @@ public class Commands implements CommandExecutor {
 				if (args[1].toLowerCase().equals("worldedit")) {
 
 					if (!(sender instanceof Player)) {
-						System.out.println("[KGenerators] Use that command as player!");
+						Logger.textToConsole("Use that command as player!");
 						return false;
 					}
 					Player p = (Player) sender;

@@ -1,103 +1,103 @@
 #Translated to Vietnamese by VoChiDanh
 messages:
-  prefix: '&8[&6KGenerators&8] '
+  prefix: '<dark_gray>[<gold>KGenerators<dark_gray>] '
   generators:
     action:
-      cant-here: '&cBạn không thể tương tác với máy quặng ở đây!'
+      cant-here: '<red>Bạn không thể tương tác với máy quặng ở đây!'
     any:
-      owner-none: '&cKhông'
-      disabled-specific: '&cTái tạo bị cấm ở thế giới này!'
-      repaired: '&aĐã sửa máy quặng thành công!'
-      no-longer-there: '&cMáy quặng không còn ở đây!'
+      owner-none: '<red>Không'
+      disabled-specific: '<red>Tái tạo bị cấm ở thế giới này!'
+      repaired: '<green>Đã sửa máy quặng thành công!'
+      no-longer-there: '<red>Máy quặng không còn ở đây!'
       object-amount: <amount> x <object>
     chunks:
-      not-loaded-yet: '&cDữ liệu chưa tải xong chunk này! Vui lòng đợi!'
+      not-loaded-yet: '<red>Dữ liệu chưa tải xong chunk này! Vui lòng đợi!'
     digging:
-      cant-here: '&cBạn không thể đào các máy quặng ở đây!'
-      only-gen: '&cBạn chỉ có thể đào các máy quặng ở đây'
-      no-permission: '&cBạn không có quyền &8(&7<permission>&8)&c để đào <generator>&c!'
+      cant-here: '<red>Bạn không thể đào các máy quặng ở đây!'
+      only-gen: '<red>Bạn chỉ có thể đào các máy quặng ở đây'
+      no-permission: '<red>Bạn không có quyền <dark_gray>(<gray><permission><dark_gray>)<red> để đào <generator><red>!'
     crafting:
-      cant-use: '&cBạn không thể chế tạo!'
-      no-permission: '&cBạn không có quyền &8(&7<permission>&8)&c để chế tạo <generator>&c!'
+      cant-use: '<red>Bạn không thể chế tạo!'
+      no-permission: '<red>Bạn không có quyền <dark_gray>(<gray><permission><dark_gray>)<red> để chế tạo <generator><red>!'
     timeleft:
-      output: '&aMáy quặng sẽ tái tạo sau &e<time>'
+      output: '<green>Máy quặng sẽ tái tạo sau <yellow><time>'
     pick-up:
-      successful: '&aBạn đã nhặt máy quặng &e<generator>'
-      cant-here: '&cBạn không thể nhặt máy quặng!'
-      no-permission: '&cBạn không có quyền &8(&7<permission>&8)&c để nhặt loại máy quặng này'
+      successful: '<green>Bạn đã nhặt máy quặng <yellow><generator>'
+      cant-here: '<red>Bạn không thể nhặt máy quặng!'
+      no-permission: '<red>Bạn không có quyền <dark_gray>(<gray><permission><dark_gray>)<red> để nhặt loại máy quặng này'
     place:
-      cant-here: '&cBạn không thể đặt máy quặng ở đây!'
-      cant-place-block: '&cBạn không thể đặt khối nào ở trên máy quặng'
-      cant-place-double-below-block: '&cBạn không thể đặt máy quặng dưới khối khác!'
-      cant-place-double-below-generator: '&cBạn không thể đặt máy quặng dưới máy quặng!'
-      no-permission: '&cBạn không có quyền &8(&7<permission>&8)&c để đặt loại máy quặng đó'
+      cant-here: '<red>Bạn không thể đặt máy quặng ở đây!'
+      cant-place-block: '<red>Bạn không thể đặt khối nào ở trên máy quặng'
+      cant-place-double-below-block: '<red>Bạn không thể đặt máy quặng dưới khối khác!'
+      cant-place-double-below-generator: '<red>Bạn không thể đặt máy quặng dưới máy quặng!'
+      no-permission: '<red>Bạn không có quyền <dark_gray>(<gray><permission><dark_gray>)<red> để đặt loại máy quặng đó'
     limits:
-      cant-place-more-type: '&cBạn không thể đặt nhiều hơn &6<number> <generator> &cmáy quặng vì giới hạn là &6<limit>!'
-      cant-pick-up: '&cBạn không thể nhặt máy quặng của &6<owner>&c!'
-      cant-use: '&cBạn không thể dùng máy quặng của &6<owner>&c!'
+      cant-place-more-type: '<red>Bạn không thể đặt nhiều hơn <gold><number> <generator> <red>máy quặng vì giới hạn là <gold><limit>!'
+      cant-pick-up: '<red>Bạn không thể nhặt máy quặng của <gold><owner><red>!'
+      cant-use: '<red>Bạn không thể dùng máy quặng của <gold><owner><red>!'
     protection:
-      cant-change-generator-item: '&cBạn không thể thay đổi vật phẩm tái tạo!'
+      cant-change-generator-item: '<red>Bạn không thể thay đổi vật phẩm tái tạo!'
     menus:
-      cant-open-here: '&cBạn không thể mở menu ở đây!'
+      cant-open-here: '<red>Bạn không thể mở menu ở đây!'
   economy:
-    no-economy-avaible: '&cHệ thống tiền tệ không tồn tại!'
-    not-enough-money: '&cBạn không đủ tiền! Bạn cần &6<cost>$&c!'
+    no-economy-avaible: '<red>Hệ thống tiền tệ không tồn tại!'
+    not-enough-money: '<red>Bạn không đủ tiền! Bạn cần <gold><cost>$<red>!'
   upgrades:
     costs:
       exp: xp
       exp-levels: xp levels
-    upgraded: '&aBạn đã nâng cấp máy quặng lên cấp độ &e<number> &avới giá &e<cost>$&a!'
-    gui-upgraded: '&cBạn không có đủ &4<cost>&c!'
-    no-next-level: '&cĐây là cấp độ tối đa của máy quặng!'
-    no-permission: '&cBạn không có quyền &8(&7<permission>&8)&c để nâng cấp máy quặng này!'
-    not-a-generator: '&cBạn không có máy quặng trên tay!'
-    separator: '&7, &e'
+    upgraded: '<green>Bạn đã nâng cấp máy quặng lên cấp độ <yellow><number> <green>với giá <yellow><cost>$<green>!'
+    gui-upgraded: '<red>Bạn không có đủ <dark_red><cost><red>!'
+    no-next-level: '<red>Đây là cấp độ tối đa của máy quặng!'
+    no-permission: '<red>Bạn không có quyền <dark_gray>(<gray><permission><dark_gray>)<red> để nâng cấp máy quặng này!'
+    not-a-generator: '<red>Bạn không có máy quặng trên tay!'
+    separator: '<gray>, <yellow>'
   hooks:
     explode-pickaxe:
-      cannot-use-on-double: '&cBạn không thể dùng cúp nổ trên máy quặng đôi!'
+      cannot-use-on-double: '<red>Bạn không thể dùng cúp nổ trên máy quặng đôi!'
   database:
-    error: '&cDatabase đã gặp lỗi!! Liên hệ admin!'    
+    error: '<red>Database đã gặp lỗi!! Liên hệ admin!'    
   commands:
     any:
-      wrong: '&cSai lệnh! Dùng /kgenerators để được giúp đỡ'
-      no-permission: '&cBạn không có quyền &8(&7<permission>&8)&c để dùng kGenerator lệnh'
-      not-a-floating-point-number: '&c''<variable>'' phải là số có dấu phẩy!'
-      not-a-integer: '&c''<variable>'' phải là số nguyên!'
-      world-doesnt-exist: '&cWorld ''<world>'' không tồn tại'
-      player-not-online: '&cNgười chơi không hoạt động'
-      player-doesnt-exist: '&cNgười chơi không tồn tại'
-      generator-doesnt-exist: '&cMáy quặng không tồn tại'
-      menu-doesnt-exist: '&cMenu không tồn tại'
-      console-only: '&cLệnh này chỉ thực hiện ở console!'
+      wrong: '<red>Sai lệnh! Dùng /kgenerators để được giúp đỡ'
+      no-permission: '<red>Bạn không có quyền <dark_gray>(<gray><permission><dark_gray>)<red> để dùng kGenerator lệnh'
+      not-a-floating-point-number: '<red>''<variable>'' phải là số có dấu phẩy!'
+      not-a-integer: '<red>''<variable>'' phải là số nguyên!'
+      world-doesnt-exist: '<red>World ''<world>'' không tồn tại'
+      player-not-online: '<red>Người chơi không hoạt động'
+      player-doesnt-exist: '<red>Người chơi không tồn tại'
+      generator-doesnt-exist: '<red>Máy quặng không tồn tại'
+      menu-doesnt-exist: '<red>Menu không tồn tại'
+      console-only: '<red>Lệnh này chỉ thực hiện ở console!'
     list:
-      header: '&aMáy Quặng:'
-      list: '&8- <generator> &8(&7Mã Số: <generatorID>&8)'
-      no-permission: '&cBạn không có quyền &8(&7<permission>&8)&c để xem danh sách máy quặng'
+      header: '<green>Máy Quặng:'
+      list: '<dark_gray>- <generator> <dark_gray>(<gray>Mã Số: <generatorID><dark_gray>)'
+      no-permission: '<red>Bạn không có quyền <dark_gray>(<gray><permission><dark_gray>)<red> để xem danh sách máy quặng'
       help: Danh sách tất cả máy quặng
     menu:
-      opened-others: '&aMở menu <menu> của máy quặng &e<generator> &acho &e<player>'
-      error: '&cMenu đã bị lỗi khi sử dụng! Liên hệ admin!'
-      no-permission: '&cBạn không có quyền &8(&7<permission>&8)&c để mở menu!'
-      no-permission-others: '&cBạn không có quyền &8(&7<permission>&8)&c để mở menu cho người khác!'
+      opened-others: '<green>Mở menu <menu> của máy quặng <yellow><generator> <green>cho <yellow><player>'
+      error: '<red>Menu đã bị lỗi khi sử dụng! Liên hệ admin!'
+      no-permission: '<red>Bạn không có quyền <dark_gray>(<gray><permission><dark_gray>)<red> để mở menu!'
+      no-permission-others: '<red>Bạn không có quyền <dark_gray>(<gray><permission><dark_gray>)<red> để mở menu cho người khác!'
       help: Mở menu
     give:
-      generator-given: '&aMáy quặng <generator> &ađã được đưa cho &e<player>'
-      generator-recieved: '&aĐã nhận máy quặng <generator> &a!'
-      usage: '&cDùng: &e/kgenerators give <người chơi> <máy quặng>'
-      no-permission: '&cBạn không có quyền &8(&7<permission>&8)&c để lấy máy quặng'
+      generator-given: '<green>Máy quặng <generator> <green>đã được đưa cho <yellow><player>'
+      generator-recieved: '<green>Đã nhận máy quặng <generator> <green>!'
+      usage: '<red>Dùng: <yellow>/kgenerators give <người chơi> <máy quặng>'
+      no-permission: '<red>Bạn không có quyền <dark_gray>(<gray><permission><dark_gray>)<red> để lấy máy quặng'
       help: Đưa máy quặng cho toàn bộ người chơi
     getall:
-      recieved: '&aĐã Nhận Máy Quặng'
-      no-permission: '&cBạn không có quyền &8(&7<permission>&8)&c để lấy máy quặng'
+      recieved: '<green>Đã Nhận Máy Quặng'
+      no-permission: '<red>Bạn không có quyền <dark_gray>(<gray><permission><dark_gray>)<red> để lấy máy quặng'
       help: Lấy máy quặng
     limits:
-      no-permission: '&cBạn không có quyền &8(&7<permission>&8)&c để kiểm tra giới hạn!'
+      no-permission: '<red>Bạn không có quyền <dark_gray>(<gray><permission><dark_gray>)<red> để kiểm tra giới hạn!'
       help: Kiểm tra giới hạn
     actions:
-      no-permission: '&cBạn không có quyền &8(&7<permission>&8)&c để kiểm tra hành động!'
+      no-permission: '<red>Bạn không có quyền <dark_gray>(<gray><permission><dark_gray>)<red> để kiểm tra hành động!'
       help: Kiểm tra hành động có thể của máy quặng
-      header: '&aNhững hành động có thể cho máy quặng:'
-      list: '&6<action> &8- &e<sneak><mode><item>'
+      header: '<green>Những hành động có thể cho máy quặng:'
+      list: '<gold><action> <dark_gray>- <yellow><sneak><mode><item>'
       sneak: 'Shift '
       break: Phá khối
       left-click: chuột trái
@@ -108,8 +108,8 @@ messages:
       time-left: Thời gian còn lại
       upgrade: Nâng cấp
     timeleft:
-      no-generator: '&cBạn không nhìn vào máy quặng đang tái tạo!'
-      no-permission: '&cBạn không có quyền &8(&7<permission>&8)&c để kiểm tra thời gian tái tạo'
+      no-generator: '<red>Bạn không nhìn vào máy quặng đang tái tạo!'
+      no-permission: '<red>Bạn không có quyền <dark_gray>(<gray><permission><dark_gray>)<red> để kiểm tra thời gian tái tạo'
       help: Kiểm tra thời gian tái tạo
       format:
         seconds: " giây"
@@ -120,32 +120,32 @@ messages:
     upgrade:
       help: Nâng cấp máy quặng
     reload:
-      done: '&aĐã tải lại plugins. Hãy kiểm tra console/logs nếu có lỗi!'
-      no-permission: '&cBạn không có quyền &8(&7<permission>&8)&c tải lại plugins'
+      done: '<green>Đã tải lại plugins. Hãy kiểm tra console/logs nếu có lỗi!'
+      no-permission: '<red>Bạn không có quyền <dark_gray>(<gray><permission><dark_gray>)<red> tải lại plugins'
       help: Tải lại plugins
     remove:
-      done: '&aĐã xóa <amount> máy quặng!'
+      done: '<green>Đã xóa <amount> máy quặng!'
       help: Xóa máy quặng
-      no-permission: '&cBạn không có quyền &8(&7<permission>&8)&c để xóa máy quặng!'
+      no-permission: '<red>Bạn không có quyền <dark_gray>(<gray><permission><dark_gray>)<red> để xóa máy quặng!'
       usage:
-        owner: '&cDùng: &e/kgenerators remove owner <owner>'
-        worldedit: '&cDùng: &e/kgenerators remove worldedit'
-      worldedit-not-found: '&cKhu vực chọn chưa hoàn tất!'
-      worldedit-wrong-selection: '&cKhu vực chọn bị lỗi!'
+        owner: '<red>Dùng: <yellow>/kgenerators remove owner <owner>'
+        worldedit: '<red>Dùng: <yellow>/kgenerators remove worldedit'
+      worldedit-not-found: '<red>Khu vực chọn chưa hoàn tất!'
+      worldedit-wrong-selection: '<red>Khu vực chọn bị lỗi!'
     spawn:
-      done: '&aĐã triệu hồi máy quặng, vị trí: &e<location_info>'
+      done: '<green>Đã triệu hồi máy quặng, vị trí: <yellow><location_info>'
       help: Triệu hồi máy quặng tại vị trí
-      no-permission: '&cBạn không có quyền &8(&7<permission>&8)&c để triệu hồi máy quặng!'
-      usage: '&cDùng: &e/kgenerators spawn <world> <x> <y> <z> <generator> [owner]'
+      no-permission: '<red>Bạn không có quyền <dark_gray>(<gray><permission><dark_gray>)<red> để triệu hồi máy quặng!'
+      usage: '<red>Dùng: <yellow>/kgenerators spawn <world> <x> <y> <z> <generator> [owner]'
     debug:
-      done: '&Debug link: &e<url>'
-      error: '&cXuất hiện lỗi khi làm debug output!'
-      no-permission: '&cBạn không có quyền &8(&7<permission>&8)&c để sao chép debug'
+      done: '<green>Đã lưu tệp debug: <yellow><file>'
+      error: '<red>Xuất hiện lỗi khi làm debug output!'
+      no-permission: '<red>Bạn không có quyền <dark_gray>(<gray><permission><dark_gray>)<red> để sao chép debug'
     help:
-      label: '&6&lKGenerators &aCommands help:'
-      format: '&e/kgenerators <subcommand> &7<help>'
+      label: '<gold><bold>KGenerators <reset><green>Commands help:'
+      format: '<yellow>/kgenerators <subcommand> <gray><help>'
 holograms:
   remaining-time:
   - '<generator_name>'
-  - '&6Thời Gian Tái Tạo:'
-  - '&e<time>'
+  - '<gold>Thời Gian Tái Tạo:'
+  - '<yellow><time>'

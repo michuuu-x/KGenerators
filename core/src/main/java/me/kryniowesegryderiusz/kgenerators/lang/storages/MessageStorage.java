@@ -1,5 +1,6 @@
 package me.kryniowesegryderiusz.kgenerators.lang.storages;
 
+import me.kryniowesegryderiusz.kgenerators.utils.ChatUtils;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -42,7 +43,7 @@ public class MessageStorage {
 	private void checkLine(String key, String value) {
 		String keyAdjusted = "messages." + key;
 		if (config.contains(keyAdjusted)) {
-			lang.put(key, Main.getMultiVersion().getChatUtils().colorize(config.getString(keyAdjusted)));
+			lang.put(key, config.getString(keyAdjusted));
 		} else {
 			try {
 				lang.put(key, value);
@@ -97,9 +98,9 @@ public class MessageStorage {
 
 				if (m.getKey().split("\\.")[0].contains("generators") && Main.getSettings().isActionbarMessages()
 						&& !forceChat) {
-					Main.getMultiVersion().getActionBar().sendActionBar((Player) sender, mess);
+					((Player) sender).sendActionBar(ChatUtils.parse(mess));
 				} else {
-					sender.sendMessage(mess);
+					sender.sendMessage(ChatUtils.parse(mess));
 				}
 			}
 		}
@@ -107,7 +108,7 @@ public class MessageStorage {
 
 	public void sendHelp(CommandSender sender) {
 
-		sender.sendMessage(lang.get("commands.help.label"));
+		sender.sendMessage(ChatUtils.parse(lang.get("commands.help.label")));
 
 		for (Map.Entry<String, String> entry : lang.entrySet()) {
 			String path = entry.getKey();
@@ -115,8 +116,8 @@ public class MessageStorage {
 
 			if (spath.length == 3 && spath[0].equals("commands") && spath[2].equals("help")
 					&& sender.hasPermission("kgenerators." + spath[1])) {
-				sender.sendMessage(lang.get("commands.help.format").replace("<subcommand>", spath[1]).replace("<help>",
-						entry.getValue()));
+				sender.sendMessage(ChatUtils.parse(lang.get("commands.help.format").replace("<subcommand>", spath[1])
+						.replace("<help>", entry.getValue())));
 			}
 		}
 	}

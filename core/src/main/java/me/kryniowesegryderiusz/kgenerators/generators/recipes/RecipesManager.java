@@ -12,8 +12,6 @@ import org.bukkit.inventory.ShapelessRecipe;
 
 import lombok.Getter;
 import me.kryniowesegryderiusz.kgenerators.Main;
-import me.kryniowesegryderiusz.kgenerators.dependencies.enums.Dependency;
-import me.kryniowesegryderiusz.kgenerators.dependencies.hooks.EcoItemsHook;
 import me.kryniowesegryderiusz.kgenerators.generators.generator.objects.Generator;
 import me.kryniowesegryderiusz.kgenerators.generators.recipes.objects.Recipe;
 import me.kryniowesegryderiusz.kgenerators.logger.Logger;
@@ -59,9 +57,6 @@ public class RecipesManager {
 				Logger.error("Recipes file: Cannot load recipe for " + generatorID + ": " + e.getMessage());
 			}
 		}
-
-		if (Main.getDependencies().isEnabled(Dependency.ECO_ITEMS))
-			EcoItemsHook.processRecipes(this);
 
 		Logger.info("Recipes file: Loaded " + this.recipes.size() + " recipes");
 	}

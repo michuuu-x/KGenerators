@@ -14,7 +14,6 @@ I want to sincerely thank everyone who has used, supported, and contributed feed
   <img src="https://img.shields.io/jenkins/build?jobUrl=https%3A%2F%2Fci.codemc.io%2Fjob%2FKryniowesegryderiusz%2Fjob%2FKGenerators%2F&style=for-the-badge&color=blue">
   <img src="https://img.shields.io/spiget/version/79246?style=for-the-badge&label=version&color=blue">
   <img src="https://img.shields.io/spiget/downloads/79246?style=for-the-badge&color=blue">
-  <img alt="bStats Servers" src="https://img.shields.io/bstats/servers/7871?style=for-the-badge&color=blue">
   <img src="https://img.shields.io/spiget/rating/79246?style=for-the-badge&color=blue">
   <img src="https://img.shields.io/github/last-commit/Kryniowesegryderiusz/KGenerators?style=for-the-badge&color=blue">
 </p>
@@ -36,8 +35,4 @@ I want to sincerely thank everyone who has used, supported, and contributed feed
  <img src="https://i.imgur.com/d410iha.gif" width="32%">
  <img src="https://i.imgur.com/HIjmXC1.gif" width="32%">
  <img src="https://i.imgur.com/JzkAgXt.gif" width="32%">
-</p>
-
-<p align="center">
- <img src="https://bstats.org/signatures/bukkit/KGenerators.svg" width="97%">
 </p>

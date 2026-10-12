@@ -1,6 +1,5 @@
 package me.kryniowesegryderiusz.kgenerators.listeners;
 
-import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
@@ -15,7 +14,6 @@ import me.kryniowesegryderiusz.kgenerators.generators.locations.handlers.enums.I
 import me.kryniowesegryderiusz.kgenerators.generators.locations.objects.GeneratorLocation;
 import me.kryniowesegryderiusz.kgenerators.logger.Logger;
 import me.kryniowesegryderiusz.kgenerators.utils.PlayerUtils;
-import com.cryptomorin.xseries.XMaterial;
 
 public class BlockBreakListener implements Listener {
 
@@ -64,16 +62,9 @@ public class BlockBreakListener implements Listener {
 				    		}
 				    		
 				    		if (Main.getSettings().isBlockDropToEq()) {
-					    		if (Main.getMultiVersion().isHigher(11)) {
-						    		for (ItemStack item : e.getBlock().getDrops(p.getItemInHand(), p))
-						    			PlayerUtils.dropToInventory(p, gLoc.getGeneratedBlockLocation(), item);
-					    			e.setDropItems(false);
-					    		} else {
-						    		for (ItemStack item : e.getBlock().getDrops(p.getItemInHand()))
-						    			PlayerUtils.dropToInventory(p, gLoc.getGeneratedBlockLocation(), item);
-					    			Main.getMultiVersion().getBlocksUtils().setBlock(e.getBlock().getLocation(), Material.AIR);
-					    			e.setCancelled(true);
-					    		}
+					    		for (ItemStack item : e.getBlock().getDrops(p.getItemInHand(), p))
+					    			PlayerUtils.dropToInventory(p, gLoc.getGeneratedBlockLocation(), item);
+				    			e.setDropItems(false);
 				    		}
 						}
 					}
