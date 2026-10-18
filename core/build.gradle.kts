@@ -2,7 +2,7 @@ dependencies {
     compileOnly("io.papermc.paper:paper-api:26.2.build.+")
 
     // Shaded into the final jar (see :dist)
-    implementation("de.tr7zw:item-nbt-api:2.16.0")
+    implementation("de.tr7zw:item-nbt-api:2.16.1")
     implementation("com.zaxxer:HikariCP:4.0.3")
 
     compileOnly("com.google.code.findbugs:jsr305:3.0.2")
